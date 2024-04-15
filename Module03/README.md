@@ -41,6 +41,95 @@ This makes objects "nouns" and methods "verbs" - with the emphasis on the verb. 
 
 👉🏽 Take a moment to discuss this concept as a team. What does it mean to you? How does it change your perspective on OOP?
 
+## Inheritance and Polymorphism - Is-A
+Realistically, these two terms always go hand in hand. While inheritance is about reusing code and keeping your code DRY (Don't Repeat Yourself), good inheritance focuses on keeping the code polymorphic. 
+
+### 👉🏽 Discussion
+
+Why would this be the case? Can you think of any examples where inheritance is used but it would not be polymorphic?
+
+### Example of (Good or Bad?) Inheritance
+
+Let's take the following UML diagram. 
+
+```mermaid
+---
+Good or bad inheritance?
+---
+classDiagram
+    direction LR
+    Shape <|-- Rectangle
+    Shape <|-- Circle
+    Rectangle <|-- Box
+    class Shape{
+        <<abstract>>
+        +draw(Point center) : void
+        +getArea() : double
+        +resize(double) : Shape
+    }
+    class Rectangle{
+        -length : double
+        -width : double
+        +draw(Point center) : void
+        +getArea() : double
+        +resize(double) : Shape
+    }
+    class Box {
+        -height : double
+        +draw(Point center) : void
+        +getArea() : double
+        +resize(double) : Shape
+    }
+    class Circle {
+        -radius : double
+        +draw() : void
+        +getArea() : double
+        +resize(double) : Shape
+        +getRadius() : double
+    }
+```
+👉🏽 Discuss the UML diagram. Is it an example of good or bad inheritance, why or why not? 
+
+Believe it or not, this is a common design, but in practice it actually breaks one of the "rules" (more like guidelines) that programmers should follow. It is known as the Liskov Substitution Principle. 
+
+> The Liskov Substitution Principle (LSP) states that objects of a superclass shall be replaceable with objects of its subclasses without affecting the functionality of the program.
+
+Or stated in code, anywhere Circle shows up in your code, you should be able to replace it with a Shape without affecting the functionality of the program. Excluding when the object is first created! 
+
+Let's take a look at the following code:
+
+```java
+Shape shape = new Circle();
+shape.draw();
+```
+
+In this case, circle is inherited from Shape, and it is polymorphic. You could also replace new Circle() with new Rectangle() and the rest of the code would still work! 
+
+Even more to the point, if we had another method that takes in the Shape, we could pass in a Circle or a Rectangle and it would still work. 
+
+```java
+GameBoard board = new GameBoard();
+board.addShape(new Circle());
+board.addShape(new Rectangle());
+
+
+// then inside game board
+
+public void addShape(Shape shape) {
+    // adds it to the game board
+}
+
+public void drawBoard() {
+    for (Shape shape : shapes) { // go through all shapes
+        shape.draw();
+    }
+}
+```
+
+### :computer: Practicing Inheritance
+
+
+
 
 
 [Alan Kay]: https://en.wikipedia.org/wiki/Alan_Kay
