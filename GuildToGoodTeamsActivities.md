@@ -24,3 +24,10 @@ The team activity is a guided study session, and it is only as effective as the 
 
 If the team is stuck on the topic, it is alright to @ the TAs or instructors in the chat. If they are around during the activity, they will hop on to give guidance. However, more than likely (due to timing of activities), they will respond later with some resources and answers. If a team is really stuck, they may also ask to schedule another meeting to help you all get caught up - this is good! Don't be afraid to ask for help. 
   
+## Grading
+Grades for team activities will be based on attendance and notes. You must attend, and as a team you need to generate notes that we can confirm your work. Ideally, you upload the notes as a PDF to the team meeting after you build them out. 
+
+> [!TIP] Good notes become a study guide for you and your team! Make sure they include everything you need to help better understand the weekly material. 
+
+### Going beyond the weekly material
+In addition to the weekly material, team activities will present new ideas and concepts that relate to the material. These ideas are more the practical application of the material, or how it may appear in industry discussion. They are meant to give you deeper insight and understanding of the material.
