@@ -92,7 +92,8 @@ classDiagram
 
 Believe it or not, this is a common design, but in practice it actually breaks one of the "rules" (more like guidelines) that programmers should follow. It is known as the Liskov Substitution Principle. 
 
-> The Liskov Substitution Principle (LSP) states that objects of a superclass shall be replaceable with objects of its subclasses without affecting the functionality of the program.
+> The Liskov Substitution Principle (LSP) states that objects of a superclass shall be replaceable with objects of its subclasses without affecting the functionality of the program. While the 
+> term was not coined by her, the concept was introduced by [Barbara Liskov] and later taught in courses across the world.
 
 Or stated in code, anywhere Circle shows up in your code, you should be able to replace it with a Shape without affecting the functionality of the program. Excluding when the object is first created! 
 
@@ -133,3 +134,4 @@ public void drawBoard() {
 
 
 [Alan Kay]: https://en.wikipedia.org/wiki/Alan_Kay
+[Barbara Liskov]: https://en.wikipedia.org/wiki/Barbara_Liskov
