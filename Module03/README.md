@@ -403,6 +403,56 @@ After discussing, add them to the UML diagram.
 > The default output is the class name and the memory address of the object,
 > which can be useful, not not as much as your custom output.
 
+### :fire: Task 1: Add Tests
+
+While for this Team Activity we do not expect full test coverage, you should always start out with tests before coding. This paradigm is known as Test Driven Development (TDD), and is a common practice in industry.
+
+#### 👉🏽 Discussion 
+Take a look at the following [article on TDD](https://tidyfirst.substack.com/p/canon-tdd). To summarize the "unspoken background", people often 
+get stuck writing all the tests, before they even think of implementation. 
+That is often a great mistake. Instead, you should design (UML), then write a *SINGLE* test, then write the code to make that test pass. Then write another test, and repeat. Often, the first test is one that causes you to setup a lot of your objects, and then you can write the rest of the tests in a more incremental fashion.
+
+
+With this in mind, think of a simple test you could write for the Animal class. Add 'AnimalTest.java' to your project, and write the test.
+
+### :fire: Task 2: Refactor the Code
+
+Now, start the task of refactoring the code. You can use the UML diagram you created to help guide you.
+
+Once your first test for animal passes, start adding other tests and refactor as needed. Admittedly, it may make sense for you to start from scratch, and just write Animal, test, and continue to build from there. 
+
+> [!IMPORTANT]
+> Designs are NOT static!  As a developer, you will change the
+> design as you implement it. This is a good thing! It means you
+> are thinking about the problem, and how to solve it. 
+> A common mistake is 'but my UML says this, and this is 'all' 
+> I can use. No, you may have not thought of something at first, 
+> and often UML provided for you, does not include private methods,
+> which are often good to add. 
+>
+> After you complete your program, you will often go back and clean
+> up your UML design to reflect what you actually did. As such,
+> it is often the start and end of the process. 
+
+
+## 👉🏽 Final Discussion  (Last 15 minutes)
+
+It is alright if you don't fully complete your new program. We suggest that
+you complete it later on your own time. You are free to talk with your team mates and even share solutions! This isn't meant to be hidden. Groups often work at different paces, so don't feel you are behind if you didn't finish!
+
+However, before you end, take a moment to review **A** possible solution (meaning your solution may be fine, and there are more than one solutions). You can find the solution in the [Solution](Solution) folder.
+
+### Factory??
+You will notice we created files with 'Factory' in the name. This is a design pattern you will come across in the future. It is a way to create objects without having to know the specific class of the object. This is often used when you have a class that is a parent of many classes, and you want to create a specific child class. It is also good for when you are unsure of 
+how that information is getting to the program.  In this case, we "hard coded" the information about Cat's, Dog's, and Fox's into the Factory. However, in a real program, this information would come from a database, or a file, or some other source. We would only have to change the Factory to read from that source, and the rest of the program would work as expected.
+
+
+Take time to discuss how the factory can be advantageous, along with the solution in general. How does it different from yours? Are there good things about it? Are there bad things about it? (It isn't perfect!)
+
+## Final Thoughts
+
+Design takes time and practice, which can be difficult while learning a new language. It is alright to struggle! It is alright to not get it right the first time. It is alright to have to refactor your code. What is most important right now is to give yourself permission to struggle, and **time** to learn (which means don't wait until the last minute to do things). 
+
 
 
 <!-- Link references -->
