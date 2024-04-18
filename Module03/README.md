@@ -212,7 +212,11 @@ Take time to explain the concepts to each other. What other questions come up as
 
 Let's practice! One of the more difficult but often best ways to learn design is by refracting (rewriting) code. This is often best if you practice with your own code, as you seek to improve it in the future. However, it is good (and sadly common in industry) for someone to have to refractor someone else's code. 
 
-With this team activity, there is a series of classes trying to represent a Menagerie of Animal Companions. The code is a bit of a mess, and it is up to you to refactor it. (You can find the code in the [src/main/java](src/main/java) folder). Note: if you are opening this 'project' after downloading the git repository, you only want to open up the specific folder Module 03, not the whole repository.
+With this team activity, there is a series of classes trying to represent a Menagerie of Animal Companions. The code is a bit of a mess, and it is up to you to refactor it. (You can find the code in the [src/main/java](src/main/java) folder). 
+
+> [!NOTE]
+> If you are opening this 'project' after downloading the git repository, you only want to open up the specific folder Module 03, not the whole repository. 
+> If you are building your own project from scratch (actually recommended in this case). Make sure to create a new project, and then copy the files from the src/main/java folder into your project. You  may need to copy the build.gradle also if your IDE doesn't set it up properly (by default, it may try to put everything in an 'app' directory). You can run `gradle wrapper` from the command line for it to update the gradle directory properly. This may take time, so it may be wise to do this BEFORE your team meeting. The code we provide still runs, even if the design is bad/doesn't make sense. 
 
 For the next part of the team activity, we will step through some key points, but how you refractor it may depend a bit on the group discussion! Don't worry, there isn't a single answer, so while we present a possible solution at the end - your solution may be different. That is fine.  
 
