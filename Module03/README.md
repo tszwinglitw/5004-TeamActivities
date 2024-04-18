@@ -298,7 +298,7 @@ Discuss and add the changes to the UML.
 
 
 ### :question: Question 3: Attributes of Nouns
-Now that you have the relationships, what are some of the "attributes" or "properties" of each object? These are items that *belong* to the object (parameters). Often these should 
+Now that you have the relationships, what are some of the "attributes" or "properties" of each object? These are items that *belong* to the object (attributes). Often these should 
 be private, and accessed via getters and setters. (Make sure to discuss why, if you are unsure about this!)
 
 Discuss and add the attributes to the UML. For the many relationships you can just say List
