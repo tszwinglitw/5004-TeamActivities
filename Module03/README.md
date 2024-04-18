@@ -227,7 +227,31 @@ Take a moment based on the short client description to identify the nouns (objec
 
 As a group, try to define the objects that are needed.
 
-In your own Java project, create the template for each object. For now, it makes sense to create them all as classes, but as you go through the next steps, you may find that some of them should be interfaces or abstract classes.
+Now, have a designated person start a UML diagram with the objects you have identified. Right now, there won't be any relationships or insides to each object, just the names.
+
+For example, it could look like
+
+```mermaid
+classDiagram
+    class Animal
+    class Companion
+    class Trick
+    class Menagerie
+    class Taxonomy
+```
+
+Bonus - if the designated person is using `mermaid` markdown in a markdown file, other can see the code they use. For example, using the code above, it would look like this:
+
+````
+```mermaid
+classDiagram
+    class Animal
+    class Companion
+    class Trick
+    class Menagerie
+    class Taxonomy
+```
+````
 
 ### :question: Question 2: Define - What are the "is-a" and "has-a" relationships?
 

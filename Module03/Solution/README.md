@@ -6,17 +6,27 @@
 Each section in the readme corresponds to a section in the team activity. The code itself exists in this directory. Remember, you do NOT have to stick with this solution. This is just one to help guide you. 
 
 - [Solution](#solution)
-  - [Question 1 - What are the needed Nouns](#question-1---what-are-the-needed-nouns)
+  - [Question 1:  What are the needed Nouns](#question-1--what-are-the-needed-nouns)
 
 
 
-## Question 1 - What are the needed Nouns
+## Question 1:  What are the needed Nouns
 
 - Animal 
 - Companion 
 - Trick
 - Menagerie
 - Taxonomy
+
+
+```mermaid
+classDiagram
+    class Animal
+    class Companion
+    class Trick
+    class Menagerie
+    class Taxonomy
+```
 
 Note, there is a logical argument for Companion to be specific animals, but the problem with that argument as every time a new animal companion type is added a new class needs to be added. It is not a scalable solution, but it can fit depending on the scope of the project.
 
