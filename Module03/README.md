@@ -212,7 +212,7 @@ Take time to explain the concepts to each other. What other questions come up as
 
 Let's practice! One of the more difficult but often best ways to learn design is by refracting (rewriting) code. This is often best if you practice with your own code, as you seek to improve it in the future. However, it is good (and sadly common in industry) for someone to have to refractor someone else's code. 
 
-With this team activity, there is a series of classes trying to represent a Menagerie of Animal Companions. The code is a bit of a mess, and it is up to you to refactor it.
+With this team activity, there is a series of classes trying to represent a Menagerie of Animal Companions. The code is a bit of a mess, and it is up to you to refactor it. (You can find the code in the [src/main/java](src/main/java) folder). Note: if you are opening this 'project' after downloading the git repository, you only want to open up the specific folder Module 03, not the whole repository.
 
 For the next part of the team activity, we will step through some key points, but how you refractor it may depend a bit on the group discussion! Don't worry, there isn't a single answer, so while we present a possible solution at the end - your solution may be different. That is fine.  
 
