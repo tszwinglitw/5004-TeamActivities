@@ -217,7 +217,7 @@ For the next part of the team activity, we will step through some key points, bu
 ### 👉🏽 Discussion 
 Go through the design, and highlight at least three things you can see to change just based on the code.
 
-Now with this in mind, it is good to think about the domain of the problem. The client wants to represent a Menagerie of Animal Companions. They need to get various information about an animal including the common name, scientific name, and the sound it makes. They also want to assign tricks to each companion. 
+Now with this in mind, it is good to think about the domain of the problem. The client wants to represent a Menagerie of Animal Companions. They need to get various information about an animal including the common name, scientific taxonomy, and the sound it makes. They also want to assign tricks to each companion. Furthermore, the Menagerie should also be able to keep animals that are not companions. They are just living there to live there, but aren't associated as a named companion. 
 
 With that in mind, does the current inheritance structure make sense? Why or why not?
 
