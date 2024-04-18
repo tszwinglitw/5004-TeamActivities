@@ -337,7 +337,64 @@ or make it a List of the type, which is List<Animal> for example.
 >     }
 > ```
 
+### :question: Question 4: Actions/Verbs of Objects (Methods)
 
+Now think of the various actions you would want each object to take. These are the methods that are associated with the object, and another way to look at them is the "verbs" in the system. They are active and do something. 
+
+After discussing, add them to the UML diagram. 
+
+> [!TIP] Mermaid
+> Mermaid figures out which items are attributes, and which are
+> methods based on the use of the parentheses. All 
+> methods should have parentheses after them, whether they take 
+> in a parameter or not. Continuing with the above example,
+> the code in the markdown could look like the following:
+> ````
+> ```mermaid
+>  classDiagram
+>     Animal <|-- Companion
+>     Animal  -->  "1" Taxonomy
+>     Companion --> "*" Trick
+>     class Animal {
+>       - taxonomy: Taxonomy
+>       + toString()  String
+>     }
+>     class Companion {
+>       - tricks: List~Trick~
+>       + addTrick(Trick)  void
+>       + getName()  String 
+>       + toString()  String
+>     } 
+> ```
+> ````
+> This would look like the following:
+> ```mermaid
+>  classDiagram
+>     Animal <|-- Companion
+>     Animal  -->  "1" Taxonomy
+>     Companion --> "*" Trick
+>     class Animal {
+>       - taxonomy: Taxonomy
+>       + toString()  String
+>     }
+>     class Companion {
+>       - tricks: List~Trick~
+>       + addTrick(Trick)  void
+>       + getName()  String
+>       + toString()  String
+>     }
+> ```
+
+> [!CAUTION] toString()
+> Did you remember to include toString() for most your objects? While
+> toString() is inherited from the Object class, it is often best to
+> override it in your classes to provide a more meaningful output.
+> The default output is the class name and the memory address of the object,
+> which can be useful, not not as much as your custom output.
+
+
+
+<!-- Link references -->
 
 [Alan Kay]: https://en.wikipedia.org/wiki/Alan_Kay
 [Barbara Liskov]: https://en.wikipedia.org/wiki/Barbara_Liskov

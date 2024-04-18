@@ -9,6 +9,7 @@ Each section in the readme corresponds to a section in the team activity. The co
   - [Question 1: Ask - What are needed Nouns (objects)](#question-1-ask---what-are-needed-nouns-objects)
   - [Question 2: Define - What are the "is-a" and "has-a" relationships?](#question-2-define---what-are-the-is-a-and-has-a-relationships)
   - [Question 3: Attributes of Nouns](#question-3-attributes-of-nouns)
+  - [Question 4: Actions/Verbs of Objects (Methods)](#question-4-actionsverbs-of-objects-methods)
 
 
 
@@ -108,6 +109,63 @@ classDiagram
     }
     class Trick {
         - name: String
+    }
+    class Taxonomy {
+    - commonName: String
+    - phylum: String
+    - order: String
+    - family: String
+    - genus: String
+    - species: String
+    - class: String
+    - kingdom: String
+    }
+```
+
+## Question 4: Actions/Verbs of Objects (Methods)
+
+At this point, we will just use the UML diagram. The Menagerie methods were
+just added to help figure out the rest of the design, and are optional given
+the specific requirements of the problem.
+
+```mermaid 
+classDiagram
+    Animal <|-- Companion
+    Animal  -->  "1" Taxonomy
+    Companion --> "*" Trick
+    Menagerie --> "*" Animal
+    class Menagerie {
+        ~ animals: List~Animal~ 
+       + getAnimalCount() int 
+       + getCompanionCount() int
+       + addAnimal(animal: Animal) void
+       + toString() String        
+    }
+    class Animal {
+        - taxonomy : Taxonomy
+        - sound : String
+        + getSound() String
+        + setSound(sound: String) void
+        + getTaxonomy() Taxonomy
+        + toString() String
+    }
+    class Companion {
+        - tricks: List~Trick~ 
+        - name: String 
+        - maxTricks: int
+        + addTrick(trick: Trick) void
+        + getTricks() List~Trick~
+        + getName() String
+        + setName(name: String) void
+        + getMaxTricks() int
+        + setMaxTricks(maxTricks: int) void
+        + toString() String
+    }
+    class Trick {
+        - name: String
+        + getName() String
+        + setName(name: String) void
+        + toString() String
     }
     class Taxonomy {
     - commonName: String
