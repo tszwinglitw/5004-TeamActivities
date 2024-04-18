@@ -6,11 +6,13 @@
 Each section in the readme corresponds to a section in the team activity. The code itself exists in this directory. Remember, you do NOT have to stick with this solution. This is just one to help guide you. 
 
 - [Solution](#solution)
-  - [Question 1:  What are the needed Nouns](#question-1--what-are-the-needed-nouns)
+  - [Question 1: Ask - What are needed Nouns (objects)](#question-1-ask---what-are-needed-nouns-objects)
+  - [Question 2: Define - What are the "is-a" and "has-a" relationships?](#question-2-define---what-are-the-is-a-and-has-a-relationships)
+  - [Question 3: Attributes of Nouns](#question-3-attributes-of-nouns)
 
 
 
-## Question 1:  What are the needed Nouns
+## Question 1: Ask - What are needed Nouns (objects)
 
 - Animal 
 - Companion 
@@ -31,3 +33,90 @@ classDiagram
 Note, there is a logical argument for Companion to be specific animals, but the problem with that argument as every time a new animal companion type is added a new class needs to be added. It is not a scalable solution, but it can fit depending on the scope of the project.
 
 There is also an argument for Animal to be something more like "Resident" or "Creature". This really is more of an issue with language and how we interpret the problem. Someone could be looking as Menagerie to be a magical menagerie for a story or game - and question where would you put a Trent, as it is plant based and not an animal. However, based on the problem statement, it made more sense to use animal in this case and not obfuscate the problem with a more general term.
+
+
+## Question 2: Define - What are the "is-a" and "has-a" relationships?
+
+- Animal
+  - is-a: Trick
+  - has-a: Taxonomy
+- Companion
+  - is-a: Animal
+  - has-a: Trick
+- Menagerie
+  - Has many: Animal / Companion 
+  - Can create Trick's to add to animals. 
+
+```mermaid
+classDiagram
+    Animal <|-- Companion
+    Animal  -->  "1" Taxonomy
+    Companion --> "*" Trick
+    Menagerie --> "*" Animal
+    
+
+```
+
+The above diagram uses symbols you may not have seen before, known as "cardinality" symbols. The "*" means "many" and the "1" means "one". So, for example, an Animal has one Taxonomy, but a Menagerie has many Animals.
+
+The way to "read" the above diagram is A Menagerie has many Animals. An Animal has one Taxonomy. An Animal is a Companion. A Companion has many Tricks.
+
+
+## Question 3: Attributes of Nouns
+
+- Menagerie
+  - animals : List of Animal
+- Animal
+  - taxonomy : Taxonomy
+  - sound : String 
+- Companion
+  - tricks : List of Trick
+  - name: String
+  - maxTricks: int 
+- Trick
+  - name: String 
+- Taxonomy
+  - commonName: String
+  - phylum: String
+  - order: String
+  - family: String
+  - genus: String
+  - species: String
+  - class: String
+  - kingdom: String
+
+
+It may be arguable if maxTricks is needed, though we included it as it was in the original design. That would be a question to take back to the client and other shareholders. It could be their shouldn't be a max. Or maybe there is a cost associated with each trick and the max is a budget. 
+
+```mermaid 
+classDiagram
+    Animal <|-- Companion
+    Animal  -->  "1" Taxonomy
+    Companion --> "*" Trick
+    Menagerie --> "*" Animal
+    class Menagerie {
+        ~ animals: List~Animal~ 
+    }
+    class Animal {
+        - taxonomy : Taxonomy
+        - sound : String
+    }
+    class Companion {
+        - tricks: List~Trick~ 
+        - name: String 
+        - maxTricks: int
+    }
+    class Trick {
+        - name: String
+    }
+    class Taxonomy {
+    - commonName: String
+    - phylum: String
+    - order: String
+    - family: String
+    - genus: String
+    - species: String
+    - class: String
+    - kingdom: String
+    }
+```

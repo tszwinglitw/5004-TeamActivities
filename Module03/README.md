@@ -240,20 +240,102 @@ classDiagram
     class Taxonomy
 ```
 
-Bonus - if the designated person is using `mermaid` markdown in a markdown file, other can see the code they use. For example, using the code above, it would look like this:
+> [!TIP] Bonus - 
+> If the designated person is using `mermaid` markdown in a markdown file, others can see the code they use. For example, using the code above, it would look like this:
 
-````
-```mermaid
-classDiagram
-    class Animal
-    class Companion
-    class Trick
-    class Menagerie
-    class Taxonomy
-```
-````
+> ````
+> ```mermaid
+> classDiagram
+>    class Animal
+>    class Companion
+>    class Trick
+>    class Menagerie
+>    class Taxonomy
+> ```
+>````
 
 ### :question: Question 2: Define - What are the "is-a" and "has-a" relationships?
+
+Now that you have the objects, start to define the relationships between the objects.
+Which objects have a "is-a" relationship, and which objects have a "has-a" relationship?
+
+It is also alright to ask are there any objects that should be interfaces or abstract classes? While it is good to ask at this stage, it is often found that as you program, you may need to refactor to add interfaces or abstract classes.
+
+Discuss and add the changes to the UML. 
+
+> [!TIP] Mermaid
+> If you are using mermaid, you can use the following code to show the relationships.
+> ````
+> ```mermaid
+> classDiagram
+>     Animal <|-- Companion
+>     Animal  -->  "1" Taxonomy 
+>     Companion --> "*" Trick
+> ```
+> ````
+> This would show that Animal is a parent of Companion, and that Animal has a Taxonomy. 
+> A Companion has many Tricks.
+>
+> The above would look like the following
+> ```mermaid
+>     classDiagram
+>     Animal <|-- Companion
+>     Animal  -->  "1" Taxonomy 
+>     Companion --> "*" Trick
+> ```
+
+> [!NOTE] Cardinality
+> While not required, the above mermaid example introduces "Cardinality" another 
+> aspect of UML especially for has-a relationships. The "\*" means "many" and 
+> the "1" means "one". Common symbols are "0..1" for zero or one, and "0..*" 
+> for zero or many. It is also common to put "n" instead of "\*". The 
+> difference is more organization dependant, and best to follow company guidelines.
+
+
+### :question: Question 3: Attributes of Nouns
+Now that you have the relationships, what are some of the "attributes" or "properties" of each object? These are items that *belong* to the object (parameters). Often these should 
+be private, and accessed via getters and setters. (Make sure to discuss why, if you are unsure about this!)
+
+Discuss and add the attributes to the UML. For the many relationships you can just say List
+or make it a List of the type, which is List<Animal> for example. 
+
+> [!WARNING]
+> What is a List?!?  It is very similar to the List you covered in python, and in the
+> next module we will cover it in detail. For now, it is a container that can hold
+> multiple objects of the same type in order. You can see the example both in the
+> provided (poorly written) Menagerie.java and Animal.java. Two major differences
+> than how you use one in python is that you have to specify the types that are
+> to be stored in the list, and that you *have* to use methods to access (no split [] or [:] in Java for Lists).
+
+> [!TIP]Mermaid
+> If you are using mermaid, you can use the following code to show the attributes.
+> ````
+> ```mermaid
+> classDiagram
+>     Animal <|-- Companion
+>     Animal  -->  "1" Taxonomy
+>     Companion --> "*" Trick
+>     class Animal {
+>       - taxonomy: Taxonomy
+>     }
+>     class Companion {
+>       - tricks: List~Trick~ 
+>     } 
+> ```
+> ````
+> This would look like the following:
+> ```mermaid
+> classDiagram
+>     Animal <|-- Companion
+>     Animal  -->  "1" Taxonomy
+>     Companion --> "*" Trick
+>     class Animal {
+>       - taxonomy: Taxonomy
+>     }
+>     class Companion {
+>       - tricks : List~Trick~
+>     }
+> ```
 
 
 
