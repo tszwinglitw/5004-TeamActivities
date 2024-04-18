@@ -159,6 +159,7 @@ classDiagram
         + setName(name: String) void
         + getMaxTricks() int
         + setMaxTricks(maxTricks: int) void
+        + getTrickCount() int
         + toString() String
     }
     class Trick {
@@ -176,5 +177,13 @@ classDiagram
     - species: String
     - class: String
     - kingdom: String
+    + getCommonName() String
+    + getPhylum() String
+    + getOrder() String
+    + getFamily() String
+    + getGenus() String
+    + getSpecies() String
+    + getTaxonomyClass() String
+    + getKingdom() String 
     }
 ```
