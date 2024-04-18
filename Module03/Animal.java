@@ -34,7 +34,7 @@ public abstract class Animal {
     }
 
     public boolean addTrick(Trick trick) {
-        if (getMaxTricks() - 1 < tricks.size()) {
+        if (getMaxTricks() - 1 > tricks.size()) {
             tricks.add(trick);
             return true; // able to add a trick
         }
