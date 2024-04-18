@@ -221,7 +221,15 @@ Now with this in mind, it is good to think about the domain of the problem. The 
 
 With that in mind, does the current inheritance structure make sense? Why or why not?
 
-### Moving Companion 
+### :question: Question 1: Ask - What are needed Nouns (objects)
+
+Take a moment based on the short client description to identify the nouns (objects) that are needed. While the programmer / examples focuses heavily on the taxonomy of animals, and each object being a subclass of another, it may not be the best way to represent the data.
+
+As a group, try to define the objects that are needed.
+
+In your own Java project, create the template for each object. For now, it makes sense to create them all as classes, but as you go through the next steps, you may find that some of them should be interfaces or abstract classes.
+
+### :question: Question 2: Define - What are the "is-a" and "has-a" relationships?
 
 
 
