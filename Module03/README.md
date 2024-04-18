@@ -5,7 +5,8 @@ Welcome to your first weekly team activity. Team Activities are guided (tutorial
 ## Grading
 Grades for team activities will be based on attendance and notes. You must attend, and as a team you need to generate notes that we can confirm your work. Ideally, you upload the notes as a PDF to the team meeting after you build them out. 
 
-> [!TIP] Good notes become a study guide for you and your team! Make sure they include everything you need to help better understand the weekly material. 
+> [!TIP] 
+> Good notes become a study guide for you and your team! Make sure they include everything you need to help better understand the weekly material. 
 
 ### ⭐ Working in Teams ⭐
 When working in teams, remember do not let one person do all the work. Make sure to work together, and ask questions. It is also better if different people program, and you all take turns programming for various team assignments.
@@ -91,7 +92,8 @@ classDiagram
 
 Believe it or not, this is a common design, but in practice it actually breaks one of the "rules" (more like guidelines) that programmers should follow. It is known as the Liskov Substitution Principle. 
 
-> [!NOTE] The Liskov Substitution Principle (LSP) states that objects of a superclass shall be replaceable with objects of its subclasses without affecting the functionality of the program. 
+> [!NOTE] 
+> The Liskov Substitution Principle (LSP) states that objects of a superclass shall be replaceable with objects of its subclasses without affecting the functionality of the program. 
 > While the term was not coined by her, the concept was introduced by [Barbara Liskov] and later taught in courses across the world.
 
 Let's take a look at the following code:
@@ -240,7 +242,8 @@ classDiagram
     class Taxonomy
 ```
 
-> [!TIP] Bonus - 
+> [!TIP] 
+> Bonus - 
 > If the designated person is using `mermaid` markdown in a markdown file, others can see the code they use. For example, using the code above, it would look like this:
 
 > ````
@@ -263,7 +266,8 @@ It is also alright to ask are there any objects that should be interfaces or abs
 
 Discuss and add the changes to the UML. 
 
-> [!TIP] Mermaid
+> [!TIP] 
+> **Mermaid**  
 > If you are using mermaid, you can use the following code to show the relationships.
 > ````
 > ```mermaid
@@ -284,7 +288,8 @@ Discuss and add the changes to the UML.
 >     Companion --> "*" Trick
 > ```
 
-> [!NOTE] Cardinality
+> [!NOTE] 
+> **Cardinality**  
 > While not required, the above mermaid example introduces "Cardinality" another 
 > aspect of UML especially for has-a relationships. The "\*" means "many" and 
 > the "1" means "one". Common symbols are "0..1" for zero or one, and "0..*" 
@@ -307,7 +312,8 @@ or make it a List of the type, which is List<Animal> for example.
 > than how you use one in python is that you have to specify the types that are
 > to be stored in the list, and that you *have* to use methods to access (no split [] or [:] in Java for Lists).
 
-> [!TIP]Mermaid
+> [!TIP]
+> **Mermaid**  
 > If you are using mermaid, you can use the following code to show the attributes.
 > ````
 > ```mermaid
@@ -343,7 +349,8 @@ Now think of the various actions you would want each object to take. These are t
 
 After discussing, add them to the UML diagram. 
 
-> [!TIP] Mermaid
+> [!TIP] 
+> **Mermaid**  
 > Mermaid figures out which items are attributes, and which are
 > methods based on the use of the parentheses. All 
 > methods should have parentheses after them, whether they take 
@@ -385,7 +392,7 @@ After discussing, add them to the UML diagram.
 >     }
 > ```
 
-> [!CAUTION] toString()
+> [!CAUTION] 
 > Did you remember to include toString() for most your objects? While
 > toString() is inherited from the Object class, it is often best to
 > override it in your classes to provide a more meaningful output.
