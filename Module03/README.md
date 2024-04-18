@@ -310,7 +310,7 @@ or make it a List of the type, which is List<Animal> for example.
 > multiple objects of the same type in order. You can see the example both in the
 > provided (poorly written) Menagerie.java and Animal.java. Two major differences
 > than how you use one in python is that you have to specify the types that are
-> to be stored in the list, and that you *have* to use methods to access (no split [] or [:] in Java for Lists).
+> to be stored in the list, and that you *have* to use methods to access (no slice operators `[:]` in Java for Lists).
 
 > [!TIP]
 > **Mermaid**  
