@@ -37,5 +37,9 @@ public class Dog extends Canidae {
     }
 
 
+    @Override
+    public String toString() {
+        return String.format("A Dog called %s with %d tricks.", getFriendlyName(), trickCount());
+    }
 
 }
