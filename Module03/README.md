@@ -186,7 +186,7 @@ public class Circle extends Shape implements HasRadius {
 Then some other code in the program do something like this:
 
 ```java
-public void doSomethingWithRadius(HasRadius shape) { // NOTICE parameter!
+public void doSomethingWithRadius(HasRadius shape) { // NOTICE parameter type!
     double radius = shape.nextRadius();
     int numRadii = shape.getNumberOfRadii();
     // do something with this info
@@ -208,7 +208,20 @@ Take time to explain the concepts to each other. What other questions come up as
 
 ## :computer: Refactoring 
 
+Let's practice! One of the more difficult but often best ways to learn design is by refracting (rewriting) code. This is often best if you practice with your own code, as you seek to improve it in the future. However, it is good (and sadly common in industry) for someone to have to refractor someone else's code. 
 
+With this team activity, there is a series of classes trying to represent a Menagerie of Animal Companions. The code is a bit of a mess, and it is up to you to refactor it.
+
+For the next part of the team activity, we will step through some key points, but how you refractor it may depend a bit on the group discussion! Don't worry, there isn't a single answer, so while we present a possible solution at the end - your solution may be different. That is fine.  
+
+### 👉🏽 Discussion 
+Go through the design, and highlight at least three things you can see to change just based on the code.
+
+Now with this in mind, it is good to think about the domain of the problem. The client wants to represent a Menagerie of Animal Companions. They need to get various information about an animal including the common name, scientific name, and the sound it makes. They also want to assign tricks to each companion. 
+
+With that in mind, does the current inheritance structure make sense? Why or why not?
+
+### Moving Companion 
 
 
 
