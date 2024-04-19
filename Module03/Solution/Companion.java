@@ -54,8 +54,8 @@ public class Companion extends Animal {
 
     @Override
     public String toString() {
-        return "Companion{" + "tricks=" + tricks + ", name='" + name + '\'' + ", maxTricks="
-                + maxTricks + '}';
+        return String.format("Companion{%s says %s, and has %s tricks.}", getName(), getSound(),
+                getTrickCount());
     }
 
 
