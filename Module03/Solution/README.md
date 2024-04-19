@@ -145,7 +145,7 @@ classDiagram
     class Animal {
         - taxonomy : Taxonomy
         - sound : String
-        + Animal(Taxonomy, String)
+        + Animal(String, Taxonomy)
         + getSound() String
         + setSound(sound: String) void
         + getTaxonomy() Taxonomy
@@ -155,9 +155,9 @@ classDiagram
         - tricks: List~Trick~ 
         - name: String 
         - maxTricks: int
-        + Companion(String)
-        + Companion(String, int)
-        + addTrick(trick: Trick) void
+        + Companion(Taxonomy, String, String)
+        + Companion(Taxonomy, String, String, int)
+        + addTrick(trick: Trick) boolean
         + getTricks() List~Trick~
         + getName() String
         + setName(name: String) void
@@ -165,6 +165,8 @@ classDiagram
         + setMaxTricks(maxTricks: int) void
         + getTrickCount() int
         + toString() String
+        + companionFromAnimal(Animal, String)$ Companion
+        + companionFromAnimal(Animal, String, int)$ Companion
     }
     class Trick {
         - name: String
