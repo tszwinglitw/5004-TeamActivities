@@ -8,8 +8,8 @@ public class Taxonomy {
     private String taxonomyClass;
     private String kingdom;
 
-    public Taxonomy(String commonName, String phylum, String order, String family, String genus,
-            String species, String taxonomyClass, String kingdom) {
+    public Taxonomy(String commonName, String species, String genus, String family, String order,
+            String taxonomyClass, String phylum, String kingdom) {
         this.commonName = commonName;
         this.phylum = phylum;
         this.order = order;
