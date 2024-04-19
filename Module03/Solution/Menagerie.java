@@ -16,10 +16,15 @@ public class Menagerie {
         for (Animal animal : animals) {
             if (animal instanceof Companion) {
                 Companion companion = (Companion) animal;
-                System.out.println(companion.getName() + " knows the following tricks:");
+                System.out.print(companion.getName() + " knows the following tricks: ");
                 for (Trick trick : companion.getTricks()) {
-                    System.out.println(trick.getName());
+                    if (trick == companion.getTricks().get(0)) {// first one
+                        System.out.print(trick.getName());
+                    } else {
+                        System.out.print(", " + trick.getName()); // the rest
+                    }
                 }
+                System.out.println();
             }
         }
     }
