@@ -21,6 +21,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" + taxonomy.commonName() + "make " + sound + '}';
+        return "Animal{" + taxonomy.getCommonName() + "makes " + sound + '}';
     }
 }
