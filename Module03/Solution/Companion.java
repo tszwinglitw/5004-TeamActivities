@@ -62,11 +62,11 @@ public class Companion extends Animal {
     // This is a common design / use of statics in a class
     // To create a new instance of the class from an existing instance
     // It is sometimes called a "Factory" method, based on the factory pattern
-    public static companionFromAnimal(Animal animal, String name) {
+    public static Companion companionFromAnimal(Animal animal, String name) {
         return new Companion(animal.getTaxonomy(), animal.getSound(), name);
     }
 
-    public static companionFromAnimal(Animal animal, String name, int maxTricks) {
+    public static Companion companionFromAnimal(Animal animal, String name, int maxTricks) {
         return new Companion(animal.getTaxonomy(), animal.getSound(), name, maxTricks);
     }
 }
