@@ -51,4 +51,9 @@ public class Taxonomy {
     public String getKingdom() {
         return kingdom;
     }
+
+    public String toString() {
+        return String.format("%s (%s<= %s <= %s <= %s <= %s <= %s <= %s <= %s)", commonName,
+                kingdom, taxonomyClass, phylum, order, family, genus, species);
+    }
 }
