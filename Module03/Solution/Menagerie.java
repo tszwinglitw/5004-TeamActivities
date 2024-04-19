@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 
 public class Menagerie {
-    private List<Animal> animals = new ArrayList();
+    private List<Animal> animals = new ArrayList<>();
 
 
     public void printAnimals() {
@@ -33,18 +33,18 @@ public class Menagerie {
         Companion whiskers = Companion
                 .companionFromAnimal(AnimalFactory.getAnimal(AnimalOption.CAT), "Whiskers");
         whiskers.addTrick(new Trick("Jump"));
-        animals.add(cat);
+        animals.add(whiskers);
 
         Companion fido =
                 Companion.companionFromAnimal(AnimalFactory.getAnimal(AnimalOption.DOG), "Fido");
         fido.addTrick(new Trick("Roll over"));
         fido.addTrick(new Trick("Play dead"));
-        animals.add(dog);
+        animals.add(fido);
 
         Companion foxy =
                 Companion.companionFromAnimal(AnimalFactory.getAnimal(AnimalOption.FOX), "Foxy");
         foxy.addTrick(new Trick("Steal food"));
-        animals.add(fox);
+        animals.add(foxy);
 
         Companion rover =
                 Companion.companionFromAnimal(AnimalFactory.getAnimal(AnimalOption.DOG), "Rover");
@@ -67,6 +67,13 @@ public class Menagerie {
         // driver of the program
 
         Menagerie menagerie = new Menagerie();
+        menagerie.fillMenagerie();
+
+        menagerie.printAnimals();
+
+        menagerie.printTricks();
+
+
 
     }
 }
