@@ -1,4 +1,4 @@
-public static class AnimalFactory {
+public final class AnimalFactory {
 
     private static final Taxonomy CAT_TAXONOMY = new Taxonomy("Cat", "Felis catus", "Felis",
             "Felidae", "Carnivora", "Mammalia", "Chordata", "Animalia");
