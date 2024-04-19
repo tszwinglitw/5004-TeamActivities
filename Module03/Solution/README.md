@@ -10,6 +10,7 @@ Each section in the readme corresponds to a section in the team activity. The co
   - [Question 2: Define - What are the "is-a" and "has-a" relationships?](#question-2-define---what-are-the-is-a-and-has-a-relationships)
   - [Question 3: Attributes of Nouns](#question-3-attributes-of-nouns)
   - [Question 4: Actions/Verbs of Objects (Methods)](#question-4-actionsverbs-of-objects-methods)
+  - [Final Solution](#final-solution)
 
 
 
@@ -165,6 +166,98 @@ classDiagram
         + setMaxTricks(maxTricks: int) void
         + getTrickCount() int
         + toString() String
+    }
+    class Trick {
+        - name: String
+        + Trick(String)
+        + getName() String
+        + setName(name: String) void
+        + toString() String
+    }
+    class Taxonomy {
+    - commonName: String
+    - phylum: String
+    - order: String
+    - family: String
+    - genus: String
+    - species: String
+    - class: String
+    - kingdom: String
+    + Taxonomy(String, String, String, String, \n String, String, String, String)
+    + getCommonName() String
+    + getPhylum() String
+    + getOrder() String
+    + getFamily() String
+    + getGenus() String
+    + getSpecies() String
+    + getTaxonomyClass() String
+    + getKingdom() String 
+    }
+```
+
+## Final Solution
+
+The final solution code is in the directory. A sample output from the solution is as follows:
+
+```plaintext
+Animal{Cat says Meow}
+Animal{Cat says Meow}
+Animal{Dog says Woof}
+Animal{Fox says No one knows what the fox says.}
+Companion{Whiskers says Meow, and knows 1 tricks.}
+Companion{Fido says Woof, and knows 2 tricks.}
+Companion{Foxy says No one knows what the fox says., and knows 1 tricks.}
+Companion{Rover says Woof, and knows 2 tricks.}
+Companion{Fluffy says Meow, and knows 2 tricks.}
+Whiskers knows the following tricks: Jump
+Fido knows the following tricks: Roll over, Play dead
+Foxy knows the following tricks: Steal food
+Rover knows the following tricks: Fetch, Shake
+Fluffy knows the following tricks: Climb, Hide
+```
+
+The UML diagram is as follows:
+
+```mermaid 
+classDiagram
+    Animal <|-- Companion
+    Animal  -->  "1" Taxonomy
+    Companion --> "*" Trick
+    Menagerie --> "*" Animal
+    Menagerie --> "uses" AnimalFactory
+    Menagerie --> "uses" AnimalOption
+    AnimalFactory --> "uses" AnimalOption
+    class Menagerie {
+       - animals: List~Animal~ 
+       + Menagerie()
+       + getAnimalCount() int 
+       + getCompanionCount() int
+       + addAnimal(animal: Animal) void
+       + toString() String        
+    }
+    class Animal {
+        - taxonomy : Taxonomy
+        - sound : String
+        + Animal(String, Taxonomy)
+        + getSound() String
+        + setSound(sound: String) void
+        + getTaxonomy() Taxonomy
+        + toString() String
+    }
+    class Companion {
+        - tricks: List~Trick~ 
+        - name: String 
+        - maxTricks: int
+        + Companion(Taxonomy, String, String)
+        + Companion(Taxonomy, String, String, int)
+        + addTrick(trick: Trick) boolean
+        + getTricks() List~Trick~
+        + getName() String
+        + setName(name: String) void
+        + getMaxTricks() int
+        + setMaxTricks(maxTricks: int) void
+        + getTrickCount() int
+        + toString() String
         + companionFromAnimal(Animal, String)$ Companion
         + companionFromAnimal(Animal, String, int)$ Companion
     }
@@ -194,4 +287,24 @@ classDiagram
     + getTaxonomyClass() String
     + getKingdom() String 
     }
+    class AnimalFactory {
+      - CAT_TAXONOMY: Taxonomy$
+      - DOG_TAXONOMY: Taxonomy$
+      - FOX_TAXONOMY: Taxonomy$
+      - CAT_SOUND: String$
+      - DOG_SOUND: String$
+      - FOX_SOUND: String$
+      + getAnimal(AnimalOption)$ Animal
+    }
+    class AnimalOption {
+      <<enum>>
+      + CAT
+      + DOG
+      + FOX
+    }
 ```
+
+In UML, the underlined variables and methods are static. The <<enum>> is a stereotype that denotes an enumeration which is a specialized class
+that helps determine options (often in switch statements).
+
+The main changes from this diagram from the original are the addition of the AnimalFactory and AnimalOption classes. The AnimalFactory class is a factory class that creates Animal objects based on the AnimalOption enumeration. The AnimalOption enumeration is a list of options for the AnimalFactory to create. This is a common pattern in software development to separate the creation of objects from the objects themselves. 
