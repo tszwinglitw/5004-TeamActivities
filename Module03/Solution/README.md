@@ -135,7 +135,8 @@ classDiagram
     Companion --> "*" Trick
     Menagerie --> "*" Animal
     class Menagerie {
-        ~ animals: List~Animal~ 
+       - animals: List~Animal~ 
+       + Menagerie()
        + getAnimalCount() int 
        + getCompanionCount() int
        + addAnimal(animal: Animal) void
@@ -144,6 +145,7 @@ classDiagram
     class Animal {
         - taxonomy : Taxonomy
         - sound : String
+        + Animal(Taxonomy, String)
         + getSound() String
         + setSound(sound: String) void
         + getTaxonomy() Taxonomy
@@ -153,6 +155,8 @@ classDiagram
         - tricks: List~Trick~ 
         - name: String 
         - maxTricks: int
+        + Companion(String)
+        + Companion(String, int)
         + addTrick(trick: Trick) void
         + getTricks() List~Trick~
         + getName() String
@@ -164,6 +168,7 @@ classDiagram
     }
     class Trick {
         - name: String
+        + Trick(String)
         + getName() String
         + setName(name: String) void
         + toString() String
@@ -177,6 +182,7 @@ classDiagram
     - species: String
     - class: String
     - kingdom: String
+    + Taxonomy(String, String, String, String, \n String, String, String, String)
     + getCommonName() String
     + getPhylum() String
     + getOrder() String
