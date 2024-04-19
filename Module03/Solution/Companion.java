@@ -6,11 +6,10 @@ public class Companion extends Animal {
     private String name;
     private int maxTricks;
 
+    private static final int DEFAULT_MAX_TRICKS = 10;
+
     public Companion(Taxonomy taxonomy, String sound, String name) {
-        super(taxonomy, sound);
-        this.name = name;
-        this.tricks = new ArrayList<>();
-        this.maxTricks = 10; // default value
+        this(taxonomy, sound, name, DEFAULT_MAX_TRICKS);
     }
 
     public Companion(Taxonomy taxonomy, String sound, String name, int maxTricks) {
