@@ -5,11 +5,28 @@ import java.util.ArrayList;
 public class Menagerie {
     private List<Animal> animals = new ArrayList<>();
 
+    public int getAnimalCount() {
+        return animals.size();
+    }
+
+    public int getCompanionCount() {
+        int count = 0;
+        for (Animal animal : animals) {
+            if (animal instanceof Companion) {
+                count++;
+            }
+        }
+        return count;
+    }
 
     public void printAnimals() {
         for (Animal animal : animals) {
             System.out.println(animal);
         }
+    }
+
+    public void addAnimal(Animal animal) {
+        animals.add(animal);
     }
 
     public void printTricks() {

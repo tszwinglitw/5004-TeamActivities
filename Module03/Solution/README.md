@@ -233,7 +233,8 @@ classDiagram
        + getAnimalCount() int 
        + getCompanionCount() int
        + addAnimal(animal: Animal) void
-       + toString() String        
+       + printTricks() void
+       + printAnimals() void
     }
     class Animal {
         - taxonomy : Taxonomy
