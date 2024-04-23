@@ -297,3 +297,5 @@ The above code will sort the list of integers. However, as a group discuss what 
 ## 👉🏽  Discussion
 
 Take a moment to discuss the various methods you wrote verse the stream functionality. What are the advantages and disadvantages of each? Can you think of other ways to test / apply the functionality. For example, maybe write a filter (see the first example) that filters the books that were published after 1950. Or write a filter that only takes odd numbers, but then adds (reduce) those odd numbers together. This last one combines the various methods you have learned so far, and you can 'chain' them together. We encourage you to work as a team to figure it out. 
+
+Do you have to be an expert in Streams? No, not at all! But it does help to know what to look for to better understand the tools you have for the situation!
