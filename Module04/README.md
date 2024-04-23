@@ -125,3 +125,78 @@ java ListRunner
 That will let you run it directly without worrying about the package. 👉🏽 DISCUSS the results! 
 
 A powerful concept is that if your entire program uses List, you often only have one spot to change the class, and a simple change between ArrayList and LinkedList can make a big difference depending on what you are trying to do. 
+
+## Streams
+Introduced in Java 8, the Stream object is a powerful way to manipulate data structures. It is a way to process data in a functional way, and can be used to filter, sort, map, and reduce data. Modern languages will often start with streams as part of their data structures, but do to java's history it wasn't added until a bit later in the design. 
+
+Traditionally, if I wanted to filter a list of numbers, I would have to write a loop to go through the list, and then add the numbers that met the criteria to a new list. 
+
+The code would be the following:
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
+
+public class YourClassName {
+    public static List<Integer> getEvens(List<Integer> numbers) {
+        List<Integer> evens = new ArrayList<>();
+        for(int i = 0; i < numbers.size(); i++){
+            if(numbers.get(i) % 2 == 0){
+                evens.add(numbers.get(i));
+            }
+        }
+        return evens;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,8,9,10); // this function is a quick way to build a list
+        List<Integer> evens = getEvens(numbers);
+        System.out.println(evens);
+    }
+}
+```
+
+### :fire: Task: Practice 
+Go ahead and create a solution/java file, and put in the above code. Make sure to change YourClassName to match the name of the .java file you create. Throughout this Module you will continue to add to this file.
+
+### Streams Example
+
+Now, let's try the same example in a more modern way using the Stream object. 
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+public class YourClassName {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,8,9,10); // this function is a quick way to build a list
+        List<Integer> evens2 = numbers.stream().filter(n -> n % 2 == 0).collect(Collectors.toList());
+        System.out.println(evens2);
+    }
+}
+```
+
+Try the above code. 👉🏽 DISCUSS the results!
+
+In english, what the code is saying is:
+1. Take the list of numbers as a stream
+2. Filter the stream to only include numbers that are even
+3. Collect the stream back into a list
+
+For the remainder of this TeamActivity, you will continue to build on your test file. While we have a solution, it is best for you all to work on your own versions and look towards the solution if stuck. 
+
+
+### :fire: Task: 
+
+The following code is an example of using a stream to "reduce" the results into a single value or set
+of items.
+
+```java
+List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5);
+Integer sum = integers.stream().reduce(0, (a, b) -> a + b);
+```
+
+:fire: Task - Write a method that does the same thing. It (a) takes in a list of Integers, and (b) returns the sum of the list.
