@@ -81,6 +81,47 @@ For a comparison between Python and Java, dictionaries are like maps, lists are 
 > For more details beyond this course a good tutorial can be found at https://stackabuse.com/java-collections-the-list-interface/, and the java framework can be found at https://docs.oracle.com/en/java/javase/21/core/java-core-libraries1.html.  Along with the tutorial at https://docs.oracle.com/javase/tutorial/collections/interfaces/index.html. 
 
 
+### 👉🏽 Discussion
+Thinking back to your 5001 class, what were some cases to use a List or Dictionary in Python? The Collections framework is a bit more detailed in giving you more control of the underlying data structure, but the fundamentals are similar. 
+
+
 <!-- Links -->
 [Java Core Libraries]: https://docs.oracle.com/en/java/javase/21/core/java-core-libraries1.html
 [Collections]: https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/package-summary.html#JavaCollectionsFramework
+
+### The power of inheritance and polymorphism
+When you are programming, you need to know which collection to use. The details of the types
+of data structures are covered more in CS 5008, but it is worth seeing the differences between. 
+
+Look for [ListRunner.java](ListRunner.java). The file is a simple program that shows
+two major concepts.
+
+1) Why you often want to declare to the interface, and not the specific object in your code.
+2) Knowing what you want to do, and picking the data structure that fits your needs is a drastic difference. 
+
+
+> [!TIP]
+> An ArrayList uses an array under the scenes. As a reminder, an array is a fixed size of multiple objects, and if you exceed the size, you need to create a new array and copy the data over. An ArrayList does this for you, constantly resizing the underlying array as needed. It gives you the advantages of an array (direct memory access) without needing to track sizes and limitations. 
+>
+> An LinkedList is something you cover in more detail in CS 5008, but it is a series of nodes that point to the next node. This allows for quick insertions and deletions, but slower access times.
+
+
+### ListRunner.java methods
+
+Take a look at ListRunner.java.  👉🏽 DISCUSS and define as a group what the following two methods do
+* runAddToFrontTest(List<Integer> list)
+* accessNthElement(List<Integer> list, int n)
+
+### :fire: Task 1: Run ListRunner.java
+
+Either in your IDE or via the command line, run ListRunner.java. If you are using the command line/terminal, you can run the following commands. 
+
+```bash
+cd Part1  #(or wherever you have the files)
+javac ListRunner.java
+java ListRunner
+```
+
+That will let you run it directly without worrying about the package. 👉🏽 DISCUSS the results! 
+
+A powerful concept is that if your entire program uses List, you often only have one spot to change the class, and a simple change between ArrayList and LinkedList can make a big difference depending on what you are trying to do. 
