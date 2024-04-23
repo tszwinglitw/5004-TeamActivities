@@ -127,7 +127,7 @@ That will let you run it directly without worrying about the package. 👉🏽 D
 A powerful concept is that if your entire program uses List, you often only have one spot to change the class, and a simple change between ArrayList and LinkedList can make a big difference depending on what you are trying to do. 
 
 ## Streams
-Introduced in Java 8, the Stream object is a powerful way to manipulate data structures. It is a way to process data in a functional way, and can be used to filter, sort, map, and reduce data. Modern languages will often start with streams as part of their data structures, but do to java's history it wasn't added until a bit later in the design. 
+Introduced in Java 8, the Stream object is a powerful way to manipulate data structures. It is a way to process data in a functional way, and can be used to filter, sort, map, and reduce data. Modern languages will often start with streams as part of their data structures, but due to java's history it wasn't added until a bit later in the design. 
 
 Traditionally, if I wanted to filter a list of numbers, I would have to write a loop to go through the list, and then add the numbers that met the criteria to a new list. 
 
