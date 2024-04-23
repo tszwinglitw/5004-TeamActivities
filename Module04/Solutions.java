@@ -41,6 +41,7 @@ public class Solutions {
         return books;
     }
 
+
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10); // this function is a
                                                                               // quick way to build
@@ -81,6 +82,15 @@ public class Solutions {
         List<Book> books2 = listToBooks(bookStrings);
         System.out.println(books2);
 
+        // sort examples
+
+        List<Integer> unsorted = Arrays.asList(5, 3, 1, 2, 4);
+        List<Integer> sorted = unsorted.stream().sorted().collect(Collectors.toList());
+        System.out.println(sorted);
+
+
+        List<Book> sortedBooks = books.stream().sorted().collect(Collectors.toList());
+        System.out.println(sortedBooks);
     }
 
 }

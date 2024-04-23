@@ -276,3 +276,17 @@ The above code is a bit more complex, but it shows how you can use the map funct
 > context it helps reduce the overhead of converting the CSV string to a Book object.
 > A more complicated example may be pulling methods from another file that helps
 > manipulate the data more before it gets mapped back to a new object.
+
+
+## Sorting Items
+Sorting Items in a list, requires that the item you are sorting implements the Comparable interface. This interface has a single method called compareTo that returns a negative number if the current object is less than the object being compared to, 0 if they are equal, and a positive number if the current object is greater than the object being compared to. By implementing Comparable, the sort method can be used to sort the list. 
+
+```java
+
+List<Integer> unsorted = Arrays.asList(5, 3, 1, 2, 4);
+List<Integer> sorted = unsorted.stream().sorted().collect(Collectors.toList());
+System.out.println(sorted);
+
+
+
+```
