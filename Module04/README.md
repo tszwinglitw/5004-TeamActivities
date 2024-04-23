@@ -218,7 +218,7 @@ Notice that the map takes a function (technically called a lambda function) that
 
 A key idea about map, is that the built list can be any time. So let's say you have a list of strings, and you want to convert the information into a new data class. 
 
-The dataclass is as follows:
+The data class is as follows:
 
 ```java
 class Book {
@@ -278,6 +278,7 @@ The above code is a bit more complex, but it shows how you can use the map funct
 > manipulate the data more before it gets mapped back to a new object.
 
 
+
 ## Sorting Items
 Sorting Items in a list, requires that the item you are sorting implements the Comparable interface. This interface has a single method called compareTo that returns a negative number if the current object is less than the object being compared to, 0 if they are equal, and a positive number if the current object is greater than the object being compared to. By implementing Comparable, the sort method can be used to sort the list. 
 
@@ -286,7 +287,13 @@ Sorting Items in a list, requires that the item you are sorting implements the C
 List<Integer> unsorted = Arrays.asList(5, 3, 1, 2, 4);
 List<Integer> sorted = unsorted.stream().sorted().collect(Collectors.toList());
 System.out.println(sorted);
-
-
-
 ```
+
+The above code will sort the list of integers. However, as a group discuss what would happen if you tried to sort a list of Book objects. 
+
+:fire: Task - Go ahead and write code that sorts the books. Since comparable is implemented, you can use code similar to the above to sort the books. You do not have to write your own sort.
+
+
+## 👉🏽  Discussion
+
+Take a moment to discuss the various methods you wrote verse the stream functionality. What are the advantages and disadvantages of each? Can you think of other ways to test / apply the functionality. For example, maybe write a filter (see the first example) that filters the books that were published after 1950. Or write a filter that only takes odd numbers, but then adds (reduce) those odd numbers together. This last one combines the various methods you have learned so far, and you can 'chain' them together. We encourage you to work as a team to figure it out. 

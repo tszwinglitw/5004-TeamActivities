@@ -91,6 +91,14 @@ public class Solutions {
 
         List<Book> sortedBooks = books.stream().sorted().collect(Collectors.toList());
         System.out.println(sortedBooks);
+
+        // discussion challenges
+        List<Book> post1950 = books.stream().filter(b -> b.getYear() > 1950).sorted()
+                .collect(Collectors.toList());
+        System.out.println(post1950);
+
+        int sumOfOdds = numbers.stream().filter(n -> n % 2 != 0).reduce(0, (a, b) -> a + b);
+        System.out.println(sumOfOdds);
     }
 
 }
