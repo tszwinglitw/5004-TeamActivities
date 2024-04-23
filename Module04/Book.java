@@ -1,4 +1,4 @@
-class Book {
+class Book implements Comparable<Book> {
     private String title;
     private String author;
     private int year;
@@ -39,6 +39,11 @@ class Book {
     @Override
     public String toString() {
         return title + " by " + author + " published in " + year;
+    }
+
+    @Override
+    public int compareTo(Book other) {
+        return this.getTitle().compareTo(other.getTitle());
     }
 
 }
