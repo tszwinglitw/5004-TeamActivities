@@ -189,7 +189,7 @@ In english, what the code is saying is:
 For the remainder of this TeamActivity, you will continue to build on your test file. While we have a solution, it is best for you all to work on your own versions and look towards the solution if stuck. 
 
 
-### :fire: Task: 
+### :fire: Task: Reduce
 
 The following code is an example of using a stream to "reduce" the results into a single value or set
 of items.
@@ -200,3 +200,79 @@ Integer sum = integers.stream().reduce(0, (a, b) -> a + b);
 ```
 
 :fire: Task - Write a method that does the same thing. It (a) takes in a list of Integers, and (b) returns the sum of the list.
+
+
+### :fire: Task: Map
+
+The following code is an example of using a stream to "map" the results into a new set of items.
+
+```java
+List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5);
+List<Integer> squared = integers.stream().map(n -> n * n).collect(Collectors.toList());
+``` 
+Notice that the map takes a function (technically called a lambda function) that takes in a single value and returns a single value *for each* value in the list. It then collects the results back into a list.
+
+:fire: Task - Write a method that does the same thing. It (a) takes in a list of Integers, and (b) returns a list of the squares of the list.
+
+#### A bit harder examples
+
+A key idea about map, is that the built list can be any time. So let's say you have a list of strings, and you want to convert the information into a new data class. 
+
+The dataclass is as follows:
+
+```java
+class Book {
+    private String title;
+    private String author;
+    private int year;
+
+    public Book(String title, String author, int year){
+        this.title = title;
+        this.author = author;
+        this.year = year;
+    }
+
+    public String getTitle(){
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public static Book createFromString(String line) {
+
+        String[] parts = line.split(",");
+        return new Book(parts[0], parts[1], Integer.parseInt(parts[2])); 
+        // the above case is simple, often try/catch statements would be good!
+    }
+
+}
+```
+
+I had a list of strings that were in the format "title,author,year". I want to convert this list of strings into a list of Book objects. 
+
+```java
+List<String> bookStrings = Arrays.asList("The Great Gatsby,F. Scott Fitzgerald,1925",
+                "To Kill a Mockingbird,Harper Lee,1960",
+                "1984,George Orwell,1949",
+                "The Catcher in the Rye,J.D. Salinger,1951",
+                "Beloved,Toni Morrison,1987");
+List<Book> books = bookStrings.stream().map(Book::createFromString).collect(Collectors.toList());
+
+```
+
+The above code is a bit more complex, but it shows how you can use the map function to convert one type of object into another across an entire set of objects. 
+
+:fire: Task - Write a method that does the same thing. It (a) takes in a list of Strings, and (b) returns a list of Book objects. You can use [Book.java](Book.java) provided with this team activity. 
+
+
+> [!TIP]
+> The createFromString method is a factory method similar to what you saw in Module 03. In this
+> context it helps reduce the overhead of converting the CSV string to a Book object.
+> A more complicated example may be pulling methods from another file that helps
+> manipulate the data more before it gets mapped back to a new object.

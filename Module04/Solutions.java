@@ -24,6 +24,23 @@ public class Solutions {
         return sum;
     }
 
+    public static List<Integer> squared(List<Integer> numbers) {
+        List<Integer> squared = new ArrayList<>();
+        for (int i = 0; i < numbers.size(); i++) {
+            squared.add(numbers.get(i) * numbers.get(i));
+        }
+        return squared;
+    }
+
+    public static List<Book> listToBooks(List<String> bookStrings) {
+        List<Book> books = new ArrayList<>();
+        for (int i = 0; i < bookStrings.size(); i++) {
+            Book tmp = Book.createFromString(bookStrings.get(i));
+            books.add(tmp);
+        }
+        return books;
+    }
+
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10); // this function is a
                                                                               // quick way to build
@@ -45,6 +62,24 @@ public class Solutions {
         int sum2 = sum(integers);
         System.out.println(sum2);
 
+        // map examples
+        List<Integer> squared = integers.stream().map(n -> n * n).collect(Collectors.toList());
+        System.out.println(squared);
+
+        List<Integer> squared2 = squared(integers);
+        System.out.println(squared2);
+
+        // map examples harder
+
+        List<String> bookStrings = Arrays.asList("The Great Gatsby,F. Scott Fitzgerald,1925",
+                "To Kill a Mockingbird,Harper Lee,1960", "1984,George Orwell,1949",
+                "The Catcher in the Rye,J.D. Salinger,1951", "Beloved,Toni Morrison,1987");
+        List<Book> books =
+                bookStrings.stream().map(Book::createFromString).collect(Collectors.toList());
+        System.out.println(books);
+
+        List<Book> books2 = listToBooks(bookStrings);
+        System.out.println(books2);
 
     }
 
