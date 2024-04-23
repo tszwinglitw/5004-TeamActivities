@@ -103,7 +103,7 @@ two major concepts.
 > [!TIP]
 > An ArrayList uses an array under the scenes. As a reminder, an array is a fixed size of multiple objects, and if you exceed the size, you need to create a new array and copy the data over. An ArrayList does this for you, constantly resizing the underlying array as needed. It gives you the advantages of an array (direct memory access) without needing to track sizes and limitations. 
 >
-> An LinkedList is something you cover in more detail in CS 5008, but it is a series of nodes that point to the next node. This allows for quick insertions and deletions, but slower access times.
+> A LinkedList is something you cover in more detail in CS 5008, but it is a series of nodes that point to the next node. This allows for quick insertions and deletions, but slower access times. 
 
 
 ### ListRunner.java methods
@@ -121,8 +121,9 @@ cd Part1  #(or wherever you have the files)
 javac ListRunner.java
 java ListRunner
 ```
+This run may take over a minute or so, so give it time. 
 
-That will let you run it directly without worrying about the package. 👉🏽 DISCUSS the results! 
+👉🏽 DISCUSS the results! 
 
 A powerful concept is that if your entire program uses List, you often only have one spot to change the class, and a simple change between ArrayList and LinkedList can make a big difference depending on what you are trying to do. 
 
