@@ -434,13 +434,23 @@ Once your first test for animal passes, start adding other tests and refactor as
 > up your UML design to reflect what you actually did. As such,
 > it is often the start and end of the process. 
 
+You only need to make sure you past the first first test! You can continue to refactor and add tests as you go, but for this team activity, our focus is on the design and process. If you want to finish the whole thing (and have time), that is great!
+
+## :fire: Java Practice Problem
+As part of **every** team activity, we will ask you to work on a Java Practice problem, and submit the code to the team files section (or as part of your notes). This is meant to give you practice similar to technical interviews, but also help build up your java skills. Remember, to learn a new language, the best thing you can do is practice! Here are some resources to find practice problems but you are not limited to them:
+
+* [CodeHS - Java Practice](https://codehs.com/practice/java)
+* [Coding Bat - Java](https://codingbat.com/java)
+* [Hacker Rank - Java(Basic)](https://www.hackerrank.com/domains/java?filters%5Bskills%5D%5B%5D=Java%20%28Basic%29)
+
+
 
 ## 👉🏽 Final Discussion  (Last 15 minutes)
 
-It is alright if you don't fully complete your new program. We suggest that
+It is alright if you don't fully complete your coding side of this activity. We suggest that
 you complete it later on your own time. You are free to talk with your team mates and even share solutions! This isn't meant to be hidden. Groups often work at different paces, so don't feel you are behind if you didn't finish!
 
-However, before you end, take a moment to review **A** possible solution (meaning your solution may be fine, and there are more than one solutions). You can find the solution in the [Solution](Solution) folder.
+However, before you end, take a moment to review **A** possible solution to the main activity (meaning your solution may be fine, and there are more than one solutions). You can find the solution in the [Solution](Solution) folder.
 
 ### Factory??
 You will notice we created files with 'Factory' in the name. This is a design pattern you will come across in the future. It is a way to create objects without having to know the specific class of the object. This is often used when you have a class that is a parent of many classes, and you want to create a specific child class. It is also good for when you are unsure of 
