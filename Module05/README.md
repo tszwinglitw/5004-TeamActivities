@@ -70,13 +70,62 @@ Using the PythonTutor (which also happens to allow java visualizations, though a
  Looking at both the memory diagrams, and the code - what do you think will be printed when the code is run? Why? 
 
 
-### Implementing .equals and .hashCode in Java
+### Implementing .equals in Java
 
-In general, the `==` sign can only truly compare primitives because they compare what is exactly on the stack frame at that moment. For objects, what is on the stack frame is actually the memory address of the object. To overcome that limitation, every Object in java has both a `.equals` and `.hashCode` method. They don't do anything special or different by default, but they can be overridden to provide a more meaningful comparison.
+In general, the `==` sign can only truly compare primitives or memory addresses because they compare what is exactly on the stack frame at that moment. For objects, what is on the stack frame is actually the memory address of the object. To overcome that limitation, every Object in java has both a `.equals` and `.hashCode` method. They don't do anything special or different by default, but they can be overridden to provide a more meaningful comparison.
 
 For example, if we wanted a student with the Name and ID to be equal to another student with the same name and ID, we could override the `.equals` method in the Student class. 
 
 
 :fire: Task: Implement the `.equals` method in the Student class.  Use the two templates provided. [Person.java](Person.java) and [Student.java](Student.java). Notice the main
-changed some from the above example, so you can better test your results.  While using `instanceof` is *alright* can you think of how you would do it using
-reflection? 
+changed some from the above example, so you can better test your results.  While using `instanceof` is *alright* can you think of how you would do it using reflection? 
+
+
+### Implementing .hashCode in Java
+
+The `.hashCode` method is used to generate a unique hash code (`int` value) for an object. This is used in conjunction with the `.equals` method to determine if two objects are equal. Why not just equals? There are multiple algorithms such as a hashing algorithm that requires an int representation of an object. By having .hashCode, we can use the int representation to quickly determine if two objects are equal along with other benefits. 
+
+> [!IMPORTANT]
+> It is standard practice to always override the `.hashCode` method when you override the `.equals` method, 
+> as not having them equivalency between the two causes unusual errors when dealing with built in java collections.
+> These two methods along with .toString() are the most common methods to override in any
+> new class you create.
+>
+> Always, if your .equals method returns true when comparing two objects, 
+> your .hashCode method should return the same value for the two objects. 
+
+
+:fire: Task: Implement the `.hashCode` method in the Student class.  Use the two templates provided. [Person.java](Person.java) and [Student.java](Student.java).
+
+The most common way to implement the `.hashCode` method is to use the `Objects.hash` method. This method takes in a variable number of arguments and returns a hash code based on the values of the arguments. 
+
+```java
+
+@Override
+public int hashCode() {
+  return Objects.hash(name, id);
+}
+```
+
+Notice that ID is a int, and name is a string. That is fine. What it does is take the hashCode of Integer(id), and the hashCode of String(name) and combines them.  You could attempt to generate a unique identifier for the student on your own, such as doing the following
+
+```java
+
+@Override
+public int hashCode() {
+  int hash = id;
+  for (int i = 0; i < name.length(); i++) {
+    hash += name.charAt(i);
+  }
+  return hash;
+}
+```
+
+But then you may find some objects are equivalent that are not. For example, in the above code, the following two students end up returning the same hash code:
+
+```java
+Student s1 = new Student("jan", 1);
+Student s2 = new Student("anj", 1);
+```
+
+As all the characters are the same even if they are in a different order. This is called a "Collision". In practice they are unavoidable, but the more unique the hash code, the less likely they are to occur. A topic you may further explore in CS 5008.
