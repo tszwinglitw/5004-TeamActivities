@@ -1,6 +1,7 @@
 package solution;
 
 import java.lang.reflect.Method;
+import java.util.Objects;
 
 public class StudentSolution extends PersonSolution {
     private int id;
@@ -29,9 +30,6 @@ public class StudentSolution extends PersonSolution {
 
         try {
             Method[] methods = obj.getClass().getMethods();
-            for (Method method : methods) {
-                System.out.println(method.getName());
-            }
             Method method =
                     obj.getClass().getDeclaredMethod("equalsStudent", StudentSolution.class);
             return equalsStudent((StudentSolution) obj);
@@ -39,6 +37,11 @@ public class StudentSolution extends PersonSolution {
         } catch (NoSuchMethodException e) {
             return false;
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName(), this.getId());
     }
 
     public static void main(String[] args) {
@@ -57,5 +60,9 @@ public class StudentSolution extends PersonSolution {
 
         System.out.println(e1.equals(e4)); // and here?
         System.out.println(e1.equals(e5)); // and here?
+
+
+        System.out.println(e1.hashCode() == e4.hashCode()); // and here?
+        System.out.println(e1.hashCode() == e5.hashCode()); // and here?
     }
 }

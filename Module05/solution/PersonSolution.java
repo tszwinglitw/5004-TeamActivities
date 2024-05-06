@@ -7,6 +7,11 @@ class PersonSolution {
         this.name = theName;
     }
 
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
+
     public String getName() {
         return this.name;
     }
