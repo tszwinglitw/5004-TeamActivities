@@ -48,6 +48,7 @@ String B = "B";
 System.out.println(a.compareTo(b));
 System.out.println(a.compareTo(a));
 System.out.println(b.compareTo(a));
+
 System.out.println();
 System.out.println(A.compareTo(B));
 System.out.println(B.compareTo(A));
@@ -64,7 +65,7 @@ What were some surprises? Why do you think 'a' is greater than 'A'?
 
 > [!WARNING]
 > A common mistake in code is using comparable assuming the results are -1, 0, 1. As you can see from the example, less than 0, 0, greater than 0 is the correct answer.
-> That is because java leaves it up to the implementation. In the case of strings, they convert it to the unicode value of the character and subtract them, which
+> That is because java leaves it up to the implementation. In the case of strings, they convert it to the int value of the characters and subtract them, which
 > can be negative, zero, or positive. 
 
 
