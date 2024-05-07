@@ -44,6 +44,11 @@ public class StudentSolution extends PersonSolution {
         return Objects.hash(this.getName(), this.getId());
     }
 
+    @Override
+    public String toString() {
+        return "StudentSolution{" + "name='" + this.getName() + '\'' + ", id=" + this.getId() + '}';
+    }
+
     public static void main(String[] args) {
         int value = 10;
         PersonSolution e1 = new StudentSolution("Alice", 1);
@@ -65,4 +70,6 @@ public class StudentSolution extends PersonSolution {
         System.out.println(e1.hashCode() == e4.hashCode()); // and here?
         System.out.println(e1.hashCode() == e5.hashCode()); // and here?
     }
+
+
 }
