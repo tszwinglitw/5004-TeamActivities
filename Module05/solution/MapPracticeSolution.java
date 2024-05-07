@@ -6,19 +6,19 @@ import java.util.Set;
 
 public class MapPracticeSolution {
     public static void main(String[] args) {
-        Map<String, Double> map = new HashMap<>();
+        Map<String, Double> food = new HashMap<>();
 
-        map.put("Apple", 3.5);
-        map.put("Banana", 2.0);
-        map.put("Cherry", 4.0);
+        food.put("Apple", 3.5);
+        food.put("Banana", 2.0);
+        food.put("Cherry", 4.0);
 
         // let's print the map
 
-        System.out.println(map);
+        System.out.println(food);
 
         // what happens if we add a duplicate key?
-        map.put("Apple", 5.0);
-        System.out.println(map);
+        food.put("Apple", 5.0);
+        System.out.println(food);
 
         // now try it with Person/Student. We will
         // use the person or student as a key and the
@@ -38,6 +38,26 @@ public class MapPracticeSolution {
 
         System.out.println(classes);
 
+        // what about streams?
+
+        food.entrySet().stream().map(x -> x.getKey() + " costs " + x.getValue())
+                .forEach(System.out::println);
+
+        System.out.println("Food that costs more than 3.0");
+        food.entrySet().stream().filter(x -> x.getValue() > 3.0)
+                .map(x -> x.getKey() + " costs " + x.getValue()).forEach(System.out::println);
+
+        System.out.println("For each loop example");
+        for (Map.Entry<String, Double> entry : food.entrySet()) {
+            System.out.println(entry.getKey() + " costs " + entry.getValue());
+        }
+
+        // or
+
+        System.out.println("For each loop example");
+        for (String key : food.keySet()) {
+            System.out.println(key + " costs " + food.get(key));
+        }
 
     }
 }

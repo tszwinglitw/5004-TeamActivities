@@ -146,9 +146,26 @@ As such, to create a new set, you can do the following:
 
 ```java
 Set<String> set = new HashSet<>();
+set.add("Alice");
+set.add("Bob");
+set.add("Carol");
+
+System.out.println(set);
+
+set.add("Alice"); // what will happen?
+
+System.out.println(set.contains("Alice"));
 ```
 
 👉🏽 Discussion - Without fully knowing the code, discuss as a group what you can tell from the code. For example: What type are you storing in the set? What is the interface? What is the actual class?
+
+Also, when we ran the code on our computer, the following output was generated:
+
+```text
+[Bob, Alice, Carol]
+```
+
+What do you notice about the order of the items? 
 
 
 ### :fire: Practice!
@@ -174,11 +191,98 @@ In python, a set was related to a dictionary. The dictionary would take key:valu
 As such, to create a new map, you can do the following:
 
 ```java
-Map<String, Double> map = new HashMap<>();
+ Map<String, Double> map = new HashMap<>();
 
-map.put("Apple", 2.99);
-map.put("Banana", 1.99);
+map.put("Apple", 3.5);
+map.put("Banana", 2.0);
+map.put("Cherry", 4.0);
+
+// let's print the map
+
+System.out.println(map);
 ```
 
 
 👉🏽 Discussion - Without fully knowing the code, discuss as a group what you can tell from the code.  Additionally, what do you think will happen if we attempt to do a `map.put("Apple", 1.99)`?
+
+
+Also, do you think the order of the items will be the same as the order it was added?
+
+### :fire: Practice!
+
+You will find the code in a file called [MapPractice.java](MapPractice.java) in the repository. This contains a main method so you can practice with maps. Run the code, was the order of the output what you expected? Why or why not? 
+
+What happens when you add a duplicate key with a different value?
+
+
+1. Go ahead and add your own examples to the file. We suggest you at least add a Map of Person keys, with `Set<String>` as values.
+
+Yes, your value can be any valid object, including another collection! For your keys, you can use any object that has a proper .equals and .hashCode method.
+
+### Streams with Sets
+
+It is possible to still use streams with maps and sets. For example, lets take our set and add some additional values to it. 
+
+```java
+Set<Person> set = new HashSet<>();
+Person p1 = new Person("Alice");
+Person p2 = new Student("Alice", 1);
+Person p3 = new Student("Alice", 2);
+
+people.add(new Person("Bob"));
+people.add(new Person("Carol"));
+
+ people.stream().filter(p -> p.getName().equals("Alice")).forEach(System.out::println);
+
+```
+
+👉🏽 Discussion - What do you think will be printed when the code is run? Why? Talk about each method (`.filter`, `.forEach`) of the stream. 
+
+
+### Streams with Maps
+
+With maps are a bit more complicated, but you can still use streams. Often,
+you either use `.keySet().stream()` or `.values().stream()` to get the stream of keys or values. You can also use `.entrySet().stream()` to get a stream of key-value pairs. 
+
+```java
+Map<String, Double> food = new HashMap<>();
+
+food.put("Apple", 3.5);
+food.put("Banana", 2.0);
+food.put("Cherry", 4.0);
+
+
+food.entrySet().stream().map(x -> x.getKey() + " costs " + x.getValue())
+      .forEach(System.out::println);
+ System.out.println("Food that costs more than 3.0");
+ food.entrySet().stream().filter(x -> x.getValue() > 3.0)
+          .map(x -> x.getKey() + " costs " + x.getValue())
+          .forEach(System.out::println);
+```
+
+Make sure to run the above code, and see what happens. 
+
+> [!NOTE] A common gotcha with streams() is that they are a copy
+> of the original collection. As such, if you want to modify the original 
+> collection, you need to collect the stream back into a collection OR use the 
+> `forEach` method on the original collection directly or use standard
+> for loops. 
+
+Speaking of for loops, you can still use it with a map.
+```java
+System.out.println("For each loop example");
+for(Map.Entry<String, Double> entry : food.entrySet()) {
+    System.out.println(entry.getKey() + " costs " + entry.getValue());
+}
+
+// or
+
+System.out.println("For each loop example");
+for(String key : food.keySet()) {
+    System.out.println(key + " costs " + food.get(key));
+}
+```
+In the case for Maps, a for:each loop is a stronger option than a for number iterated loop. 
+
+Needless to say, there are multiple ways to handle it in java, and 
+for now, you should focus on what makes the most sense to you. If you are wonder, "but what is more efficient?" the answer is, it depends on the situation.
