@@ -42,6 +42,14 @@ public class SetPracticeSolution {
         System.out.println(people.contains(p4));
 
 
+        // also we can still use streams
+
+        people.add(new PersonSolution("Bob"));
+        people.add(new PersonSolution("Carol"));
+
+        people.stream().filter(p -> p.getName().equals("Alice")).forEach(System.out::println);
+
+
     }
 
 }
