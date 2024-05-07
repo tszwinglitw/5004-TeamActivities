@@ -262,7 +262,8 @@ food.entrySet().stream().map(x -> x.getKey() + " costs " + x.getValue())
 
 Make sure to run the above code, and see what happens. 
 
-> [!NOTE] A common gotcha with streams() is that they are a copy
+> [!NOTE] 
+> A common gotcha with streams() is that they are a copy
 > of the original collection. As such, if you want to modify the original 
 > collection, you need to collect the stream back into a collection OR use the 
 > `forEach` method on the original collection directly or use standard
