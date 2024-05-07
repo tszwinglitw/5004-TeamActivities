@@ -165,3 +165,20 @@ You will fine [SetPractice.java](SetPractice.java) in the repository. This conta
   ```
 
 What happens when you add p4 to the set? Is it working the same way when you add Strings? Why or why not? (if not, double check your equal and hashCode methods)  
+
+
+## Maps in Java
+
+In python, a set was related to a dictionary. The dictionary would take key:value pairs, but all keys had to be unique. As such, the collection of keys was a set.  In java, this is very similar, but instead of calling it a dictionary, we call it a `Map`. The `Map` interface is used to represent a collection of key-value pairs. The `Map` interface is implemented by the `HashMap` class. 
+
+As such, to create a new map, you can do the following:
+
+```java
+Map<String, Double> map = new HashMap<>();
+
+map.put("Apple", 2.99);
+map.put("Banana", 1.99);
+```
+
+
+👉🏽 Discussion - Without fully knowing the code, discuss as a group what you can tell from the code.  Additionally, what do you think will happen if we attempt to do a `map.put("Apple", 1.99)`?
