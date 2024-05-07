@@ -9,4 +9,9 @@ class Person {
     public String getName() {
         return this.name;
     }
+
+    @Override
+    public String toString() {
+        return "PersonSolution{" + "name='" + this.name + '\'' + '}';
+    }
 }

@@ -12,6 +12,11 @@ public class Student extends Person {
         return this.id;
     }
 
+    @Override
+    public String toString() {
+        return "StudentSolution{" + "name='" + this.getName() + '\'' + ", id=" + this.getId() + '}';
+    }
+
     public static void main(String[] args) {
         int value = 10;
         Person e1 = new Student("Alice", 1);
