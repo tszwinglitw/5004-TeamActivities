@@ -29,7 +29,7 @@ public class StudentSolution extends PersonSolution {
         }
 
         try {
-            Method[] methods = obj.getClass().getMethods();
+            // getDeclaredMethod works well if we are using protected
             Method method =
                     obj.getClass().getDeclaredMethod("equalsStudent", StudentSolution.class);
             return equalsStudent((StudentSolution) obj);
