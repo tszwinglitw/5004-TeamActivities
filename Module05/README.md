@@ -400,6 +400,21 @@ This is good practice with file reading, and make sure you discuss as a group wh
 You can use [StudentLoader.java](StudentLoader.java) as a template to get started.
 
 
+## 👉🏽  Design Thought Discussion
+
+Often when designing classes, there are two approaches one can take. One is to focus on the 'goals' of the application, and design the classes around the primary ideas. The other is to focus on the data, and design the classes around the data.
+
+In practice, it ends up being a combination of both.  
+
+Taking the data into account (courses.txt) how would have that changed your design of Student.java if you started there?
+
+Is it a good or bad idea to design around the data? Why or why not? 
+
+There isn't a clear answer on this, and that is alright! It is more about understanding the trade-offs and making the best decision for the situation. A good Software Architect will be able to do both, and often they take both approaches into account when designing a system. 
+
+Take away, if you are pounding your head on getting your data to fit your design, then it may be time to reevaluate your design. And for much of what you do, a data driven approach is really good for the 'data/model layer' of your application.
+
+
 ## :fire: Java Practice Problem
 As part of **every** team activity, we will ask you to work on a Java Practice problem, and submit the code to the team files section (or as part of your notes). This is meant to give you practice similar to technical interviews, but also help build up your java skills. **Each team member needs to select a different problem!** But you can share/and should share answers and help each other. Remember, to learn a new language, the best thing you can do is practice! Here are some resources to find practice problems but you are not limited to them:
 
