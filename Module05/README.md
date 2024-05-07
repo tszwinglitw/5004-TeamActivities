@@ -1,4 +1,4 @@
-# Module 04 Team Activity - Equality, Hashing, and Collections Framework
+# Module 05 Team Activity - Equality, Hashing, and Collections Framework
 
 For this activity, we are going look at the purpose of .equal and .hashCode methods in Java. We will also look at the Collections Framework in Java, specifically in the context of collections that need .equals and .hashCode methods for them to work effectively. 
 
