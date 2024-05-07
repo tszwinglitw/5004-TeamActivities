@@ -303,7 +303,8 @@ Do you have to be an expert in Streams? No, not at all! But it does help to know
 
 
 ## :fire: Java Practice Problem
-As part of **every** team activity, we will ask you to work on a Java Practice problem, and submit the code to the team files section (or as part of your notes). This is meant to give you practice similar to technical interviews, but also help build up your java skills. Remember, to learn a new language, the best thing you can do is practice! Here are some resources to find practice problems but you are not limited to them:
+As part of **every** team activity, we will ask you to work on a Java Practice problem, and submit the code to the team files section (or as part of your notes). This is meant to give you practice similar to technical interviews, but also help build up your java skills. **Each team member needs to select a different problem!** But you can share/and should share answers and help each other. Remember, to learn a new language, the best thing you can do is practice! Here are some resources to find practice problems but you are not limited to them:
+
 
 * [CodeHS - Java Practice](https://codehs.com/practice/java)
 * [Coding Bat - Java](https://codingbat.com/java)

@@ -437,7 +437,8 @@ Once your first test for animal passes, start adding other tests and refactor as
 You only need to make sure you pass the first first test! You can continue to refactor and add tests as you go, but for this team activity, our focus is on the design and process. If you want to finish the whole thing (and have time), that is great! However, make sure you save time for the rest of this activity.
 
 ## :fire: Java Practice Problem
-As part of **every** team activity, we will ask you to work on a Java Practice problem, and submit the code to the team files section (or as part of your notes). This is meant to give you practice similar to technical interviews, but also help build up your java skills. Remember, to learn a new language, the best thing you can do is practice! Here are some resources to find practice problems but you are not limited to them:
+As part of **every** team activity, we will ask you to work on a Java Practice problem, and submit the code to the team files section (or as part of your notes). This is meant to give you practice similar to technical interviews, but also help build up your java skills. **Each team member needs to select a different problem!** But you can share/and should share answers and help each other. Remember, to learn a new language, the best thing you can do is practice! Here are some resources to find practice problems but you are not limited to them:
+
 
 * [CodeHS - Java Practice](https://codehs.com/practice/java)
 * [Coding Bat - Java](https://codingbat.com/java)

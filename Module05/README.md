@@ -286,3 +286,123 @@ In the case for Maps, a for:each loop is a stronger option than a for number ite
 
 Needless to say, there are multiple ways to handle it in java, and 
 for now, you should focus on what makes the most sense to you. If you are wonder, "but what is more efficient?" the answer is, it depends on the situation.
+
+## File I/O in Java
+
+While not directly related to the course module, we wanted you to practice with reading and writing files in java. This is a common task in software development, and it is important to know how to do it. The logic and 'theory' is still the same that you learned in CS 5001 - Most notable
+
+1. Protect against exceptions
+2. Ideally read in as strings and then parse the information (for text files)
+3. Always close the file when you are done with it. (though this is often done automatically). 
+
+### Reading Files Pre Java 17
+
+Pre Java 17, the most common way to read a file was to use the `BufferedReader` class. This class is used to read text from a character-input stream. It can be used to read data line by line by readLine() method. 
+
+```java
+public static void main(String[] args) {
+    try {
+        BufferedReader reader = new BufferedReader(new FileReader("raven.txt"));
+
+        List<String> lines = new ArrayList<>();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            lines.add(line.trim());
+        }
+        reader.close();
+        System.out.println(lines);
+
+    } catch (IOException e) {
+        System.out.println("An error occurred.");
+        e.printStackTrace();
+    }
+}
+```
+You can run the above example using [BufferedReaderExample.java](BufferedReaderExample.java) in the repository. Make sure raven.txt is in the same directory as the file.
+
+### Writing Files Pre Java 17
+
+Pre Java 17, the most common way to write a file was to use the `BufferedWriter` class. This class is used to write text to a character-output stream. It can be used to write data line by line by write() method. 
+
+```java
+public static void main(String[] args) {
+    try {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+
+        writer.write("Aloha World");
+        writer.newLine();
+        writer.write("This is a test");
+
+        writer.close();
+
+    } catch (IOException e) {
+        System.out.println("An error occurred.");
+        e.printStackTrace();
+    }
+}
+```
+You can run the above example using [BufferedWriterExample.java](BufferedWriterExample.java) in the repository. 
+
+### Reading Files Post Java 17
+
+Starting with Java 17, you can use the `Files` class to read and write files. The `Files` class provides a method called `readAllLines` that reads all lines from a file as a `List` of `String`. 
+
+```java
+public static void main(String[] args) {
+    try {
+        List<String> lines = Files.readAllLines(Path.of("raven.txt"));
+        System.out.println(lines);
+
+    } catch (IOException e) {
+        System.out.println("An error occurred.");
+        e.printStackTrace();
+    }
+}
+```
+This is similar to what was done with the `BufferedReader` class, but it is a bit more concise. It is also what you was done in homework 03. You can also use the Files.lines() method to get a Stream of lines from a file if you already
+plan to work with a stream (using .map or .filter for example). 
+
+
+> [!NOTE]
+> Using java.nio.Files (new input output) only reads the lines in as a group. If you want to read a line and process it, then read another line, you need to go back to the BufferedReader class. This is intentional. Ideally, you want to read all lines at once, and then process them. This keeps from having potential access issues with the file. However, for very large files, that may not be possible to do in a time efficient manner. What is better to use? As per usual with CS, the answer is "it depends", though for the most part, the Files class is the better option.
+
+
+
+
+### Writing Files Post Java 17
+
+Starting with Java 17, you can use the `Files` class to write files. The `Files` class provides a method called `write` that writes a `List` of `String` to a file. 
+
+```java
+public static void main(String[] args) {
+    try {
+        List<String> lines = new ArrayList<>();
+        lines.add("Aloha World");
+        lines.add("This is a test");
+
+        Files.write(Path.of("output.txt"), lines);
+
+    } catch (IOException e) {
+        System.out.println("An error occurred.");
+        e.printStackTrace();
+    }
+}
+```
+
+### :fire: Practice!
+
+Now it is your turn to practice reading files. You will notice a file called, [courses.txt](courses.txt) in the repository. This file contains a list of 
+student names, and the courses they are taking. A name may show up
+more than once, but the course will be different. You should use your Student class, along with a HashMap of `<Student, Set<String>>` to store the information.
+
+This is good practice with file reading, and make sure you discuss as a group what you are doing.
+
+You can use [StudentLoader.java](StudentLoader.java) as a template to get started.
+
+
+## :fire: Java Practice Problem
+As part of **every** team activity, we will ask you to work on a Java Practice problem, and submit the code to the team files section (or as part of your notes). This is meant to give you practice similar to technical interviews, but also help build up your java skills. **Each team member needs to select a different problem!** But you can share/and should share answers and help each other. Remember, to learn a new language, the best thing you can do is practice! Here are some resources to find practice problems but you are not limited to them:
+
+* [CodeHS - Java Practice](https://codehs.com/practice/java)
+* [Coding Bat - Java](https://codingbat.com/java)
+* [Hacker Rank - Java(Basic)](https://www.hackerrank.com/domains/java?filters%5Bskills%5D%5B%5D=Java%20%28Basic%29)
