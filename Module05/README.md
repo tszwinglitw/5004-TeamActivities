@@ -393,7 +393,7 @@ public static void main(String[] args) {
 
 Now it is your turn to practice reading files. You will notice a file called, [courses.txt](courses.txt) in the repository. This file contains a list of 
 student names, and the courses they are taking. A name may show up
-more than once, but the course will be different. You should use your Student class, along with a HashMap of `<Student, Set<String>>` to store the information.
+more than once, but the course will be different. You should use a HashMap of `<String, Set<String>>` to store the information. We are intentionally suggesting String to make it easier (as the file doesn't have student ID in it). 
 
 This is good practice with file reading, and make sure you discuss as a group what you are doing.
 
