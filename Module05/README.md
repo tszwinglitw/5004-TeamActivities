@@ -81,6 +81,8 @@ For example, if we wanted a student with the Name and ID to be equal to another 
 changed some from the above example, so you can better test your results.  While using `instanceof` is *alright* can you think of how you would do it using reflection? 
 
 
+
+
 ### Implementing .hashCode in Java
 
 The `.hashCode` method is used to generate a unique hash code (`int` value) for an object. This is used in conjunction with the `.equals` method to determine if two objects are equal. Why not just equals? There are multiple algorithms such as a hashing algorithm that requires an int representation of an object. By having .hashCode, we can use the int representation to quickly determine if two objects are equal along with other benefits. 
@@ -129,3 +131,37 @@ Student s2 = new Student("anj", 1);
 ```
 
 As all the characters are the same even if they are in a different order. This is called a "Collision". In practice they are unavoidable, but the more unique the hash code, the less likely they are to occur. A topic you may further explore in CS 5008.
+
+
+> [!NOTE]
+> In industry is very common to use a ready made class that handles equality and hashCode for you. These class are called [EqualsBuilder](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html) and [HashCodeBuilder](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html). They are part of the Apache Commons Lang library. You can see an example [here](https://www.codeproject.com/articles/143431/apache-commons-equalsbuilder-and-hashcodebuilder).
+>
+> Starting with Homework 05, you can OPTIONALLY use the [Apache Commons Lang Library](https://commons.apache.org/) classes in your code as we have included the commons-lang3 library in the project.
+
+## Sets in Java
+
+In mathematics a set contains a collection of unique elements. This was also used in python using the 'Set' data structure. In Java, the `Set` interface is used to represent a collection of unique elements. The `Set` interface is implemented by the `HashSet` class.
+
+As such, to create a new set, you can do the following:
+
+```java
+Set<String> set = new HashSet<>();
+```
+
+👉🏽 Discussion - Without fully knowing the code, discuss as a group what you can tell from the code. For example: What type are you storing in the set? What is the interface? What is the actual class?
+
+
+### :fire: Practice!
+
+You will fine [SetPractice.java](SetPractice.java) in the repository. This contains a main method so you can practice with sets. 
+
+1. Take a look at the provided code, discuss what it does. 
+2. Add to the code an set that uses Person, with both Person and Student objects. Provide some examples including what happens when you try to add a duplicate. For example, the constructors looked like the following:
+  ```java
+    Person p1 = new Person("Alice");
+    Person p2 = new Student("Alice", 1);
+    Person p3 = new Student("Alice", 2);
+    Person p4 = new Student("Alice", 1); // same as p2?
+  ```
+
+What happens when you add p4 to the set? Is it working the same way when you add Strings? Why or why not? (if not, double check your equal and hashCode methods)  
