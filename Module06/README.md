@@ -18,6 +18,7 @@ This team activity is designed to help you understand the following concepts:
 * Sort data using the `Collections.sort()` method and sorted() method in streams
 * Sort data using lambda expressions 
 * Use the `TreeSet` and `TreeMap` classes to keep data presorted in a collection
+* Identify the benefits of a Strategy Pattern for sorting data
 
 
 ## Comparators and Sorting
