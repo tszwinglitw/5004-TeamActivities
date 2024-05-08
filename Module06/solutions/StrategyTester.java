@@ -65,6 +65,34 @@ public class StrategyTester {
         System.out.println(numbers.stream().sorted(new IntegerSortStrategy.lengthSort())
                 .collect(Collectors.toList()));
 
+        System.out.println();
+
+        System.out.println("Now destructive sort on original list");
+
+        System.out.println("Added Order/original list");
+        System.out.println(numbers);
+        System.out.println();
+
+        System.out.println("Sorting in natural order");
+        numbers.sort(null);
+        System.out.println(numbers);
+        System.out.println();
+
+        System.out.println("Sorting in reverse order");
+        numbers.sort(new IntegerSortStrategy.reverseSort());
+        System.out.println(numbers);
+        System.out.println();
+
+        System.out.println("Sorting by absolute value");
+        numbers.sort(new IntegerSortStrategy.absoluteValueSort());
+        System.out.println(numbers);
+        System.out.println();
+
+        System.out.println(
+                "Sorting by length, note since it is string length, negatives are often longer.");
+        numbers.sort(new IntegerSortStrategy.lengthSort());
+        System.out.println(numbers);
+
 
 
     }
