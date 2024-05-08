@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-import solutions.FlightSolution;
+
 
 public class Flight implements Comparable<Flight> {
     private String airline;
