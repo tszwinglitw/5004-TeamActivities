@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 public class StrategyTester {
     public static void main(String[] args) {
@@ -39,6 +40,31 @@ public class StrategyTester {
         Set<Integer> set4 = new TreeSet<>(new IntegerSortStrategy.lengthSort());
         set4.addAll(numbers);
         System.out.println(set4);
+
+        System.out.println();
+        // quick question, why would we want to sort on streams and not the original
+        // list?
+        System.out.println("Now Sorting On Streams");
+
+        System.out.println("Sorting in natural order");
+        System.out.println(numbers.stream().sorted().collect(Collectors.toList()));
+        System.out.println();
+
+        System.out.println("Sorting in reverse order");
+        System.out.println(numbers.stream().sorted(new IntegerSortStrategy.reverseSort())
+                .collect(Collectors.toList()));
+        System.out.println();
+
+        System.out.println("Sorting by absolute value");
+        System.out.println(numbers.stream().sorted(new IntegerSortStrategy.absoluteValueSort())
+                .collect(Collectors.toList()));
+        System.out.println();
+
+        System.out.println(
+                "Sorting by length, note since it is string length, negatives are often longer.");
+        System.out.println(numbers.stream().sorted(new IntegerSortStrategy.lengthSort())
+                .collect(Collectors.toList()));
+
 
 
     }
