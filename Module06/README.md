@@ -208,6 +208,7 @@ Now that we have the Flight class ready, let's see how to use a TreeSet:
 Set<FlightSolution> flightSet = new TreeSet<>(flights);
 System.out.println(flightSet);
 ```
+:fire: Add the above code to your main function, making changes as needed.
 
 What was printed? Did we have to call sort first? Why or why not?
 
@@ -237,9 +238,12 @@ flightSeats.put(f3, 300);
 
 System.out.println(flightSeats);
 ```
+:fire: Add the above code to your main function, making changes as needed.
 
+👉🏽  Discussion - What was printed? Did we have to call sort first? Why or why not?
 
-## Sorting Strategy "Pattern"
+## Sorting Strategy Pattern
+
 
 
 
