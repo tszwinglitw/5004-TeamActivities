@@ -242,9 +242,23 @@ System.out.println(flightSeats);
 
 👉🏽  Discussion - What was printed? Did we have to call sort first? Why or why not?
 
+
+Another common case is for the key to be a string of the unique identifier, and the value to be the object. This is a common pattern, and you will see it often. In the case of flight, it could be `TreeMap<String, Flight>` where String is the flightID. 
+
 ## Sorting Strategy Pattern
 
+A common question is that there are a lot of potential attributes to sort against, what is the best way to handle this? One way is to use the Strategy Pattern. The Strategy Pattern is a design pattern that allows you to define a family of algorithms, encapsulate each one, and make them interchangeable.
 
+That is a lot of big words, but let's think about in terms of sorting. Your compareTo() method can be the 'default' case, and only often implemented if there is a uniqueID of some sort in the class (unique way to identify the object). If you want to sort by other attributes, you can create a new class that implements the `Comparator` interface, *for each* attribute you want to sort. This means you may have multiple classes that implement the `Comparator` interface, all focusing on the type of sorting strategy you want to use.
+
+The solutions folder has an example of this using the Integer class. By default, the Integer class sorts based on the value of the integer. However, [IntegerSortStrategy.java](solutions/IntegerSortStrategy.java) has a number of classes that implement the `Comparator` interface to sort a list of Integers in different ways. We then test that strategy in the [StrategyTester.java](solutions/StrategyTester.java) file.
+
+
+### 👉🏽  Discussion 
+
+What are some things you notice about the code as a group? Any questions come to mind? How can this Strategy Pattern be useful? Especially when it comes to sorting?
+
+We will cover the Strategy Pattern in more detail in a future module, but we wanted to introduce it here as it is a common pattern used in Java. 
 
 
 ## :fire: Java Practice Problem
