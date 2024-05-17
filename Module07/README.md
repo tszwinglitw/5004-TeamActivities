@@ -162,6 +162,15 @@ As a Team complete the reader to include thumbnail, description, and year publis
 > BGGeek makes use of xml attributes, which is a way to add info inside the tag itself. For example `<thumbnail value="https://www.example.com/image.jpg"/>`, value would be an attribute to the thumbnail tag. The advantage of this is that it can be faster to read, as you only need to read the start tag to get the info. However, it is a trade off depending on what you need to represent. You can view the XML file we are reading by going to [https://boardgamegeek.com/xmlapi2/thing?id=13,14,15,16,17](https://boardgamegeek.com/xmlapi2/thing?id=13,14,15,16,17). 
 
 
+## Relationship to Model
+
+The model layer is your data layer in an application, and also how you manipulate that data. Knowing how to convert and read different file formats is only part of the model, but it is an essential element. It is also worth noting an important characteristic of the XMLReader for the Board Game example - it takes an `InputStream` not just a file! This allows the model to get the data from a variety of sources, not just a file, but still the model itself is the same once the data is brought into the program. 
+
+### 👉🏽  Discuss 
+An important aspect  of the model is that it **protects** the data from the rest of the application. This can be done by sending records or other immutable (or copies) of information to the controller and view, but rarely is the full mutable instance of an object sent up to the other components of the program - even if the object is mutable inside to the model. Talk about this concept, and what are other major characteristics of the model layer. 
+
+You will continue to get practice with Models, and most stuff you have written already falls into the model layer of an application. The overall philosophy of MVC is to protect different aspects of the program, only exposing exactly what is needed - and nothing more. If this sounds familiar it is! This is essentially encapsulation at the design level, and many forms of architecture follow this principle. As such learning MVC will help when you explore other design patterns and architectures, if you keep in mind the goal is always to protect and provide a separation of concerns. 
+
 
 ## :fire: Java Practice Problem
 As part of **every** team activity, we will ask you to work on a Java Practice problem, and submit the code to the team files section (or as part of your notes). This is meant to give you practice similar to technical interviews, but also help build up your java skills. **Each team member needs to select a different problem!** But you can share/and should share answers and help each other. Remember, to learn a new language, the best thing you can do is practice! Here are some resources to find practice problems but you are not limited to them:
