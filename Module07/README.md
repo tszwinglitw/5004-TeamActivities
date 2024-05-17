@@ -82,7 +82,7 @@ people: [{
   "name": "Jane Smith",
   "age": 32,
   "city": "Los Angeles"
-}]
+}],
 cities: [{
   "name": "New York",
     coordinates: {
@@ -97,7 +97,7 @@ cities: [{
         "longitude": -118.2437
         }
     }]
-}]
+}
 ```
 
 Anything between `[]` is an array, and anything between `{}` is an object like a map. Objects have key-value pairs, where the key is a string, and the value can be a string, number, boolean, array, or object.  
