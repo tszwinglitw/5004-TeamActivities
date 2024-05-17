@@ -73,7 +73,7 @@ JavaScript Object Notation - JSON. This format was developed to be a lightweight
 
 JSON file format looks like
 ```json
-people: [{
+"people": [{
   "name": "John Doe",
   "age": 29,
   "city": "New York"
@@ -83,21 +83,20 @@ people: [{
   "age": 32,
   "city": "Los Angeles"
 }],
-cities: [{
+"cities": [{
   "name": "New York",
-    coordinates: {
+    "coordinates": {
     "latitude": 40.7128,
     "longitude": -74.0060
     }  
 },
 {
   "name": "Los Angeles",
-    coordinates: {
+   "coordinates": {
         "latitude": 34.0522,
         "longitude": -118.2437
         }
     }]
-}
 ```
 
 Anything between `[]` is an array, and anything between `{}` is an object like a map. Objects have key-value pairs, where the key is a string, and the value can be a string, number, boolean, array, or object.  
