@@ -1,10 +1,9 @@
-import java.io.BufferedReader;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class GBGeek {
+public class BGGeek {
     private static final String URL_STR = "https://www.boardgamegeek.com/xmlapi2/thing?id=%s";
 
     /**
