@@ -135,6 +135,31 @@ Let's take a look at some code that reads the simple.xml file.
 
 :fire: [SimpleXMLReader.java](SimpleXMLReader.java) - This program reads the simple.xml file and prints the information to the console. As a group discuss and then run the file. Comment throughout the file to help your understanding of what is going on. 
 
+Then add the following to the endElement method.
+
+```java
+    if (qName.equalsIgnoreCase("person")) {
+        people.add(Person.fromMap(current));
+        current = null;
+    } else {
+        if (current != null) {
+            current.put(qName, buffer.toString());
+        }
+    }
+```
+
+> [!WARNING]
+> The most common error in using SAX is not resetting the buffer after you have read the data. This can cause the data to be incorrect, not read at all, or read all at once. Thus the reason startElement has `buffer.setLength(0);`. Then between the start of a tag such as `<person>` and the end tag, `characters(char[] ch, int start, int length)` is called, so you add
+> the contents of char[] ch to your buffer. During endElement, you deal with that information how you need (add it to another object, ignore it, etc).
+
+## :keyboard: Putting it together
+
+Now, as a team, you will work on writing your own SAX parser to read a more complex XML file. We have started it for you in [BGGeekXMLReader.java](BGGeekXMLReader.java). The flow starts in [BGGeek.java](BGGeek.java) where we connect to the BoardGameGeek API and download the information about a game. We then send that information to BGGeekXMLReader.java to parse the XML information. However, that information is not complete.
+
+As a Team complete the reader to include thumbnail, description, and year published.  
+
+> [!NOTE]
+> BGGeek makes use of xml attributes, which is a way to add info inside the tag itself. For example `<thumbnail value="https://www.example.com/image.jpg"/>`, value would be an attribute to the thumbnail tag. The advantage of this is that it can be faster to read, as you only need to read the start tag to get the info. However, it is a trade off depending on what you need to represent. You can view the XML file we are reading by going to [https://boardgamegeek.com/xmlapi2/thing?id=13,14,15,16,17](https://boardgamegeek.com/xmlapi2/thing?id=13,14,15,16,17). 
 
 
 

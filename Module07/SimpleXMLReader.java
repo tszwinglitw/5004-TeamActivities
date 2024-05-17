@@ -24,7 +24,7 @@ public class SimpleXMLReader {
         }
     }
 
-    class SimpleXMLHandler extends DefaultHandler {
+    static class SimpleXMLHandler extends DefaultHandler {
         List<Person> people;
         Map<String, String> current;
         StringBuffer buffer = new StringBuffer();
@@ -45,14 +45,7 @@ public class SimpleXMLReader {
 
         @Override
         public void endElement(String uri, String localName, String qName) {
-            if (qName.equalsIgnoreCase("person")) {
-                people.add(Person.fromMap(current));
-                current = null;
-            } else {
-                if (current != null) {
-                    current.put(qName, buffer.toString());
-                }
-            }
+            // student to add
         }
 
         @Override
