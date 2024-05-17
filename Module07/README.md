@@ -68,11 +68,74 @@ While we have been using .split to parse CSV files, there are libraries that can
 > When you see things talk about Maven like the first page of OpenCSV, that also works for gradle! Gradle is built off of maven, and  uses a different file format to store the dependencies.
 
 
+## JSON Files
+JavaScript Object Notation - JSON. This format was developed to be a lightweight, human-readable format for exchanging data. It is often used to store configuration information, or to send data between a server and a client. It is based on JavaScript, but is language-independent. It is easy to read and write, and is supported by many programming languages.  For Java, you can use the Jackson library to read and write JSON files. You can find more information about Jackson at [https://github.com/FasterXML/jackson-docs?tab=readme-ov-file#tutorials](https://github.com/FasterXML/jackson-docs?tab=readme-ov-file#tutorials)
+
+JSON file format looks like
+```json
+people: [{
+  "name": "John Doe",
+  "age": 29,
+  "city": "New York"
+},
+{
+  "name": "Jane Smith",
+  "age": 32,
+  "city": "Los Angeles"
+}]
+cities: [{
+  "name": "New York",
+    coordinates: {
+    "latitude": 40.7128,
+    "longitude": -74.0060
+    }  
+},
+{
+  "name": "Los Angeles",
+    coordinates: {
+        "latitude": 34.0522,
+        "longitude": -118.2437
+        }
+    }]
+}]
+```
+
+Anything between `[]` is an array, and anything between `{}` is an object like a map. Objects have key-value pairs, where the key is a string, and the value can be a string, number, boolean, array, or object.  
+
+It is important to note that it is hierarchical and can store nested data. 
+
+👉🏽  Discuss the JSON file format, and how it is different from CSV files.
 
 ### XML Files
 
+Extensible Markup Language - XML. This format was developed to store and transport data. It is a hierarchical format, and is often used to store configuration information, or to send data between a server and a client. You have seen us use XML before for the .properties file in java, and Java has built in readers for XML.  For Java, you can use the DOM or SAX parser to read and write XML files. You can find more information about the DOM parser at [https://docs.oracle.com/javase/tutorial/jaxp/dom/index.html](https://docs.oracle.com/javase/tutorial/jaxp/dom/index.html) and the SAX parser at [https://docs.oracle.com/javase/tutorial/jaxp/sax/index.html](https://docs.oracle.com/javase/tutorial/jaxp/sax/index.html)
 
-### JSON Files
+
+While the DOM (Document Object Model)  is very common if you need to traverse an XML document, it can also be expensive as it keeps the entire document in memory. SAX (Simple API for XML) is a stream-based parser that reads the document from start to finish, and is more memory efficient.
+
+Here is an example of a simple XML file.
+```xml
+<people>
+  <person>
+    <name>John Doe</name>
+    <age>29</age>
+    <city>New York</city>
+  </person>
+  <person>
+    <name>Jane Smith</name>
+    <age>32</age>
+    <city>Los Angeles</city>
+  </person>
+</people>
+```
+
+What is it is saying is there can be any number of people, and each person has a name, age, and city.
+
+Let's take a look at some code that reads the simple.xml file. 
+
+:fire: [SimpleXMLReader.java](SimpleXMLReader.java) - This program reads the simple.xml file and prints the information to the console. As a group discuss and then run the file. Comment throughout the file to help your understanding of what is going on. 
+
+
 
 
 ## :fire: Java Practice Problem
