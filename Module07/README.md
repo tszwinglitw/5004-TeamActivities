@@ -47,7 +47,7 @@ The following classes were added to this project.
 * [Student.java](Student.java) - Example of a record class
 * [Person.java](Person.java) - Example of a record class 
 
-👉🏽  Discussion - Take time to discuss and run the above classes. Additionally, we have added [GameData.java](GameBoard.java) as an example of implementing GameBoard as a record.  For Record GameBoard as compared to Class GameBoard, there are some subtle differences that keep them from exactly equivalent. Can you uncover the difference? Maybe try modifying some of the values in the `main` in Record GameBoard to see the results.
+👉🏽  Discussion - Take time to discuss and run the above classes. Additionally, we have added [BoardGame.java](BoardGame.java) as an example of implementing BoardGame as a record.  For Record BoardGame as compared to Class BoardGame, there are some subtle differences that keep them from exactly equivalent. Can you uncover the difference? Maybe try modifying some of the values in the `main` in Record BoardGame to see the results.
 
 
 > [!TIP]
