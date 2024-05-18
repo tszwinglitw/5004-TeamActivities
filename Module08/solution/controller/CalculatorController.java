@@ -1,17 +1,17 @@
 package solution.controller;
 
 import java.util.Stack;
-import solution.model.Calculator;
+import solution.model.ICalculator;
 import solution.view.ConsoleView;
 import solution.model.Operation;
 
 public class CalculatorController {
 
     private ConsoleView view;
-    private Calculator model;
+    private ICalculator model;
 
 
-    public CalculatorController(ConsoleView view, Calculator model) {
+    public CalculatorController(ConsoleView view, ICalculator model) {
         this.view = view;
         this.model = model;
     }
@@ -56,7 +56,7 @@ public class CalculatorController {
             if ((number = isNumber(token)) != null) {
                 numbers.push(number);
             } else {
-                Operation op = Operation.getOperation(token);
+                Operation op = ICalculator.getOperation(token);
                 if (op == null) {
                     throw new IllegalArgumentException("Invalid operation: " + token);
                 }
@@ -67,7 +67,7 @@ public class CalculatorController {
                 Number b = numbers.pop();
                 Number a = numbers.pop();
                 Number result;
-                result = doOperation(op, a, b);
+                result = model.invokeOperation(op, a, b);
                 numbers.push(result);
             }
         }
@@ -77,19 +77,6 @@ public class CalculatorController {
         return numbers.pop();
     }
 
-    private Number doOperation(Operation opt, Number a, Number b) {
-        switch (opt) {
-            case ADD:
-                return model.add(a, b);
-            case SUBTRACT:
-                return model.subtract(a, b);
-            case MULTIPLY:
-                return model.multiply(a, b);
-            case DIVIDE:
-                return model.divide(a, b);
-            default:
-                throw new IllegalArgumentException("Invalid operation: " + opt);
-        }
-    }
+
 
 }

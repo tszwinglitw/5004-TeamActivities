@@ -235,7 +235,8 @@ Since a calculator can chain operations such as `+ 1 + 2 * 3 5` which is
 the equivalent of `1 + 2 + 3 * 5`, we need to parse the input and
 perform the operations in the correct order. We can do this by
 splitting the input into tokens and using a stack to keep track of
-the numbers and operations. (You don't have to worry about parenthesis)
+the numbers and operations. You don't have to worry about parenthesis or
+order of operations for this exercise. 
 
 ```java
 
@@ -253,7 +254,7 @@ private Number processOperation(String operation) {
 
   String[] tokens = operation.split("\\s+");
   for (var i = tokens.length - 1; i >= 0; i--) {
-            String token = tokens[i];
+      String token = tokens[i];
       if (token.isEmpty()) {
           continue;
       }
@@ -298,6 +299,41 @@ private Number processOperation(String operation) {
 ```
 
 👉🏽  Discussion  and :fire: Task- Add the above code to your controller but before you add it, discuss what each element does. You may even want to clean up the code, as the switch statement could be its own private method (which probably would follow SOLID design better).
+
+### Huston, we have a problem, sort of.
+
+At this point, you should have a working calculator, but there is a problem. Everything is tightly coupled instead of using interfaces that can help make the code interchangeable. Additionally, the view relies on the control for its actions, which is not ideal as for example if we switch to a GUI view, we would have to change the controller and view both!
+
+### Step 4: Create Interfaces
+
+The first set will be to create an interface for the model. While this step is arguably less important, it is a good practice to follow. 
+
+```java
+package model;
+
+public interface ICaculator {
+    Number invokeOperation(Operation operation, Number a, Number b);
+
+    Number add(Number a, Number b);
+
+    Number subtract(Number a, Number b);
+
+    Number multiply(Number a, Number b);
+
+    Number divide(Number a, Number b);
+
+    List<String> getOperationSymbols();
+
+    Operation getOperation(String symbol);
+}
+```
+
+The above interface may be a bit too detailed (specially based on where you placed Operations.java), and you may find you need either invokeOperation or add,subtract,multiply,divide. However, you should go ahead and add the interface to your program, and if need be, add another layer to the model. 
+
+Now make sure to update your controller to use the interface instead of the concrete class. 
+
+
+
 
 
 

@@ -1,6 +1,6 @@
 package solution.model;
 
-public class Calculator {
+public class Calculator implements ICalculator {
     public Number add(Number a, Number b) {
         return a.doubleValue() + b.doubleValue();
     }
@@ -15,6 +15,22 @@ public class Calculator {
 
     public Number divide(Number a, Number b) {
         return a.doubleValue() / b.doubleValue();
+    }
+
+    @Override
+    public Number invokeOperation(Operation operation, Number a, Number b) {
+        switch (operation) {
+            case ADD:
+                return add(a, b);
+            case SUBTRACT:
+                return subtract(a, b);
+            case MULTIPLY:
+                return multiply(a, b);
+            case DIVIDE:
+                return divide(a, b);
+            default:
+                throw new IllegalArgumentException("Invalid operation: " + operation);
+        }
     }
 
     public static void main(String[] args) {
