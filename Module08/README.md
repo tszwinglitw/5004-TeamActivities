@@ -104,7 +104,7 @@ public class Calculator {
 > [!TIP]
 > What is `Number`? It is an abstract class that is the superclass of all classes that represent numeric values in java. It is used here to allow the calculator to work with different types of numbers, such as `Integer`, `Double`, and `BigDecimal`. We assumed `doubleValue()` as math operations are typically done with floating point numbers, and not whole numbers. Though an additional feature could be to allow the user to specify the type of number they want to use. Learn more about [`Number`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html).
 
-Since there are a number of operations, it may also make sense to create an operations `enum` that will help make it easier for the controller to determine which operation to perform. 
+Since there are a number (pun intended) of operations, it may also make sense to create an operation `enum` that will help make it easier for the controller to determine which operation to perform. 
 
 ```java
 // which package would this go in?
@@ -122,7 +122,7 @@ public enum Operation {
         return symbol;
     }
 
-    public Operation getOperation(String symbol) {
+    public static Operation getOperation(String symbol) {
         for (Operation operation : Operation.values()) {
             if (operation.getSymbol().equals(symbol)) {
                 return operation;
@@ -136,7 +136,168 @@ public enum Operation {
 
 👉🏽  Discussion - where should you place Operation. It is fair to note there are good arguments for both the Model and Controller (but not the view). So as a team decide as you work through your reasoning. 
 
-### Step 2: Create the
+### Step 2: Create The View
+
+At this point, we can create a *simple* view that will display the two numbers and the result of the operation. Create a class called ConsoleView, in the view package. 
+
+```java
+public class ConsoleView {
+    private static final String PROMPT = "> ";
+    private static final String ERROR = "Error: ";
+    private static final Console console = System.console();
+
+    public void displayWelcome() {
+        console.printf("Welcome to the calculator\n");
+        console.printf("Allowed operations: " + Arrays.asList(Operation.values()).stream()
+                .map(Operation::getSymbol).collect(Collectors.joining(" ")) + "\n");
+        console.printf("Type exit to close calculator.\n");
+
+    }
+
+    public void displayError(String message) {
+        console.printf(ERROR + message + "\n");
+    }
+
+    public void displayResult(Number result) {
+        console.printf("%s\n", result.toString());
+    }
+
+    public String getClientOperation() {
+        console.printf(PROMPT);
+        return console.readLine();
+    }
+
+    public void close() {
+        console.printf("Goodbye!\n");
+    }
+}
+```
+
+👉🏽  Discussion - Discuss the provided code. What are some issues you can see (spoiler, we will add an interface in another step!). Most notably, think about the direction of communication between the view and controller at this point. Is it one way or two way?
+
+
+### Step 3: Create the Controller
+Now, let's create the controller which acts as input manager and interaction with the model and view. Create a class called `CalculatorController` in the `controller` package.
+
+```java
+public class CalculatorController {
+
+    private ConsoleView view;
+    private Calculator model;
+
+
+    public CalculatorController(ConsoleView view, Calculator model) {
+        this.view = view;
+        this.model = model;
+    }
+
+    public void run() {
+        view.displayWelcome();
+        while (true) {
+            String operation = view.getClientOperation();
+            if (operation.equalsIgnoreCase("exit")) {
+                break;
+            }
+            try {
+                // to add
+            } catch (Exception e) {
+                view.displayError(e.getMessage());
+            }
+        }
+        view.close();
+    }
+}
+```
+
+And then you can also start the initial driver which you can place in the root/default package of your project. 
+
+```java
+public class CalculatorApp {
+
+    public static void main(String[] args) {
+        ConsoleView view = new ConsoleView();
+        Calculator model = new Calculator();
+        CalculatorController controller = new CalculatorController(view, model);
+        controller.run();
+
+    }
+}
+```
+
+#### Update Controller
+
+At this stage, if we run the application it won't do much other
+than printing the welcome message, and looping until someone types
+exit. Let's take time to update the controller to handle the input
+from the client and perform the operation.
+
+Since a calculator can chain operations such as `+ 1 + 2 * 3 5` which is
+the equivalent of `1 + 2 + 3 * 5`, we need to parse the input and
+perform the operations in the correct order. We can do this by
+splitting the input into tokens and using a stack to keep track of
+the numbers and operations. (You don't have to worry about parenthesis)
+
+```java
+
+private Number isNumber(String token) {
+    try {
+        Number dbl = Double.parseDouble(token);
+        return dbl;
+    } catch (NumberFormatException e) {
+        return null;
+    }
+}
+
+private Number processOperation(String operation) {
+  Stack<Number> numbers = new Stack<>();
+
+  String[] tokens = operation.split("\\s+");
+  for (var i = tokens.length - 1; i >= 0; i--) {
+            String token = tokens[i];
+      if (token.isEmpty()) {
+          continue;
+      }
+      Number number;
+      if ((number = isNumber(token)) != null) {
+          numbers.push(number);
+      } else {
+          Operation op = Operation.getOperation(token);
+          if (op == null) {
+              throw new IllegalArgumentException("Invalid operation: " + token);
+          }
+          if (numbers.size() < 2) {
+              throw new IllegalArgumentException("Not enough numbers for operation: " + token);
+          }
+          Number b = numbers.pop();
+          Number a = numbers.pop();
+          Number result;
+          switch (op) {
+              case ADD:
+                  result = model.add(a, b);
+                  break;
+              case SUBTRACT:
+                  result = model.subtract(a, b);
+                  break;
+              case MULTIPLY:
+                  result = model.multiply(a, b);
+                  break;
+              case DIVIDE:
+                  result = model.divide(a, b);
+                  break;
+              default:
+                  throw new IllegalArgumentException("Invalid operation: " + token);
+          }
+          numbers.push(result);
+      }
+  }
+  if (numbers.size() != 1) {
+      throw new IllegalArgumentException("Invalid expression");
+  }
+  return numbers.pop();
+}
+```
+
+👉🏽  Discussion  and :fire: Task- Add the above code to your controller but before you add it, discuss what each element does. You may even want to clean up the code, as the switch statement could be its own private method (which probably would follow SOLID design better).
 
 
 

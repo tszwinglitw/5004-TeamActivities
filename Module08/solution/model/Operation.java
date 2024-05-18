@@ -19,7 +19,7 @@ public enum Operation {
         return symbol;
     }
 
-    public Operation getOperation(String symbol) {
+    public static Operation getOperation(String symbol) {
         for (Operation operation : Operation.values()) {
             if (operation.getSymbol().equals(symbol)) {
                 return operation;
