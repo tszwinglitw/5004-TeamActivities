@@ -412,6 +412,8 @@ A major advantage of this approach is that the view and controller are now decou
 
 Design takes practice! It takes discussion, refactoring, and more discussion. The more you practice, the better you will get at it. The more you discuss, the more you will learn. 
 
+You will find a solution in the solution folder, but remember, there are many ways to solve a problem. The key is to make sure your solution is maintainable, scalable, and understandable.
+
 
 ## :fire: Java Practice Problem
 As part of **every** team activity, we will ask you to work on a Java Practice problem, and submit the code to the team files section (or as part of your notes). This is meant to give you practice similar to technical interviews, but also help build up your java skills. **Each team member needs to select a different problem!** But you can share/and should share answers and help each other. Remember, to learn a new language, the best thing you can do is practice! Here are some resources to find practice problems but you are not limited to them:
