@@ -173,7 +173,7 @@ public class ConsoleView {
 }
 ```
 
-👉🏽  Discussion - Discuss the provided code. What are some issues you can see (spoiler, we will add an interface in another step!). Most notably, think about the direction of communication between the view and controller at this point. Is it one way or two way?
+👉🏽  Discussion - Discuss the provided code. What are some issues you can see (spoiler, we will add an interface in another step!). Most notably, think about the direction of communication between the view and controller at this point. 
 
 
 ### Step 3: Create the Controller
@@ -235,8 +235,7 @@ Since a calculator can chain operations such as `+ 1 + 2 * 3 5` which is
 the equivalent of `1 + 2 + 3 * 5`, we need to parse the input and
 perform the operations in the correct order. We can do this by
 splitting the input into tokens and using a stack to keep track of
-the numbers and operations. You don't have to worry about parenthesis or
-order of operations for this exercise. 
+the numbers and operations. You don't have to worry about parenthesis or order of operations for this exercise. 
 
 ```java
 
@@ -330,11 +329,88 @@ public interface ICaculator {
 
 The above interface may be a bit too detailed (specially based on where you placed Operations.java), and you may find you need either invokeOperation or add,subtract,multiply,divide. However, you should go ahead and add the interface to your program, and if need be, add another layer to the model. 
 
-Now make sure to update your controller to use the interface instead of the concrete class. 
+:fire: Now make sure to update your controller to use the interface instead of the concrete class. 
 
 
+#### View and Controller Interface
+
+Within the Controller, the .run() method ends up being tightly coupled with the view. This is because the loop to run the program is hosted there, and as such, if we change views, we would still need to be passing in the string "exit" to close the program. This may not at all be what we want. Instead, if we create an interface that allows the view to send messages to the controller, we can then have the controller decide what to do with those messages while the view handles all the interaction. 
+
+To make such a change, we need to create an minimal interface for the controller. This exposes the methods that the view can call, and only those. 
+
+```java
+public interface IController {
+    void invokeOperation(String operation);
+}
+```
+
+This essentially is a wrapper for processOperation, that also handles the callbacks to view for display, and more importantly, error catching.
+
+Now, update the view to use this interface. 
+
+```java
+public interface IView {
+    void start();
+}
+
+public class ConsoleView implements IView {
+    private static final String PROMPT = "> ";
+    private static final String ERROR = "Error: ";
+    private static final Console console = System.console();
+    private IController controller;
+
+    public ConsoleView(IController controller) {
+        this.controller = controller;
+    }
+    public void start() {
+        displayWelcome();
+        while (true) {
+            String operation = getClientOperation();
+            if (operation.equalsIgnoreCase("exit")) {
+                break;
+            }
+            try {
+                Number result = actions.processOperation(operation);
+                displayResult(result);
+            } catch (Exception e) {
+                displayError(e.getMessage());
+            }
+        }
+        close();
+    }
+
+}    
+```
+
+And then in the app, 
+
+```java
+public class CalculatorApp {
+
+    public static void main(String[] args) {
+
+        ICalculator model = new Calculator();
+        IController controller = new CalculatorController(model);
+        IView view = new ConsoleView(controller);
+        view.start();
+    }
+}
+```
+
+👉🏽  Discussion - Discuss the changes you made. What are the benefits of using interfaces in this way? What are some potential drawbacks? Also, how does this "flip" the flow of the program.
 
 
+A major advantage of this approach is that the view and controller are now decoupled. This means that we can easily swap out the view for a different one without having to change the controller. For example, we could create a GUI view that displays the calculator on the screen instead of using the console. We could also create a web view that allows users to interact with the calculator through a web browser. The controller would remain the same in both cases, but the view would be different. Also, the key aspect of the view is that it is processing the input, making sure it is clean and ready for model to do the actual work. 
+
+
+> [!CAUTION]
+> There are no easy answers! This is design, and for every design presented, there is a good argument for why it is both the best and a bad idea. One design flaw in this approach is if the controller is doing other things in the background. It would be good to add two way communication where the view tells the controller the exit action has happened, causing communication through all the components.  We will cover this more in the next module.
+> 
+> The goal of this activity is to get you thinking about how to design your code, and how to make it more maintainable and scalable.
+
+## Overall
+
+Design takes practice! It takes discussion, refactoring, and more discussion. The more you practice, the better you will get at it. The more you discuss, the more you will learn. 
 
 
 ## :fire: Java Practice Problem

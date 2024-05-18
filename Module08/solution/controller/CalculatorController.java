@@ -2,36 +2,18 @@ package solution.controller;
 
 import java.util.Stack;
 import solution.model.ICalculator;
-import solution.view.ConsoleView;
 import solution.model.Operation;
 
-public class CalculatorController {
+public class CalculatorController implements IController {
 
-    private ConsoleView view;
     private ICalculator model;
 
 
-    public CalculatorController(ConsoleView view, ICalculator model) {
-        this.view = view;
+    public CalculatorController(ICalculator model) {
         this.model = model;
     }
 
-    public void run() {
-        view.displayWelcome();
-        while (true) {
-            String operation = view.getClientOperation();
-            if (operation.equalsIgnoreCase("exit")) {
-                break;
-            }
-            try {
-                Number result = processOperation(operation);
-                view.displayResult(result);
-            } catch (Exception e) {
-                view.displayError(e.getMessage());
-            }
-        }
-        view.close();
-    }
+
 
     private Number isNumber(String token) {
         try {
@@ -42,7 +24,8 @@ public class CalculatorController {
         }
     }
 
-    private Number processOperation(String operation) {
+    @Override
+    public Number processOperation(String operation) {
         Stack<Number> numbers = new Stack<>();
 
         String[] tokens = operation.split("\\s+");

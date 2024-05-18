@@ -3,46 +3,64 @@ package solution.view;
 import java.io.Console;
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import solution.controller.IController;
+import solution.model.ICalculator;
 import solution.model.Operation;
 
-public class ConsoleView {
+public class ConsoleView implements IView {
     private static final String PROMPT = "> ";
     private static final String ERROR = "Error: ";
-    private static final Console console = System.console();
+    private static final Console CONSOLE = System.console();
+    private IController actions;
+
+
+    public ConsoleView(IController actions) {
+        this.actions = actions;
+    }
+
+    public void start() {
+        displayWelcome();
+        while (true) {
+            String operation = getClientOperation();
+            if (operation.equalsIgnoreCase("exit")) {
+                break;
+            }
+            try {
+                Number result = actions.processOperation(operation);
+                displayResult(result);
+            } catch (Exception e) {
+                displayError(e.getMessage());
+            }
+        }
+        close();
+    }
 
     public void displayWelcome() {
-        console.printf("Welcome to the calculator\n");
-        console.printf("Allowed operations: " + Arrays.asList(Operation.values()).stream()
-                .map(Operation::getSymbol).collect(Collectors.joining(" ")) + "\n");
-        console.printf("Type exit to close calculator.\n");
+        CONSOLE.printf("Welcome to the calculator\n");
+        CONSOLE.printf("Allowed operations: "
+                + ICalculator.getOperationSymbols().stream().collect(Collectors.joining(" "))
+                + "\n");
+        CONSOLE.printf("Type exit to close calculator.\n");
 
     }
 
     public void displayError(String message) {
-        console.printf(ERROR + message + "\n");
+        CONSOLE.printf(ERROR + message + "\n");
     }
 
     public void displayResult(Number result) {
-        console.printf("%s\n", result.toString());
+        CONSOLE.printf("%s\n", result.toString());
     }
 
     public String getClientOperation() {
-        console.printf(PROMPT);
-        return console.readLine();
+        CONSOLE.printf(PROMPT);
+        return CONSOLE.readLine();
     }
 
     public void close() {
-        console.printf("Goodbye!\n");
+        CONSOLE.printf("Goodbye!\n");
     }
 
     // used to test
-    public static void main(String[] args) {
-        ConsoleView view = new ConsoleView();
-        view.displayWelcome();
-        view.displayResult(1);
-        view.displayError("Error message");
-        view.getClientOperation();
-        view.close();
-    }
 
 }
