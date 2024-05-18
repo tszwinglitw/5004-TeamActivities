@@ -67,6 +67,77 @@ However, you **ALSO** need to ensure that your file is in the correct directory 
 👉🏽  Discussion - How can packages be useful? What would be some ways you could break up your code from past assignments or team activities. Pick one activity and discuss how you can break it up into concepts, that can then be coupled into packages. 
 
 
+## Let's Practice
+
+For this activity, we will create a simple application that uses the MVC pattern. The application will be a simple calculator that can add, subtract, multiply, and divide two numbers. The calculator will have a view that displays the two numbers and the result of the operation, and a controller that processes the user input and updates the model and view.
+
+To make things "easier", we will use prefix notation for the operations. In prefix notation, the operator comes before the operands. For example, to add 2 and 3, you would write `+ 2 3`. The controller will parse the input and call the appropriate method on the model to perform the operation.
+
+
+### :fire: Step 1: Create the Model
+
+The model will be a simple class that performs the operations. It will have methods to add, subtract, multiply, and divide two numbers. Create a new class called `Calculator` in the `model` package.
+
+```java
+package model;
+
+public class Calculator {
+
+  public Number add(Number a, Number b) {
+    return a.doubleValue() + b.doubleValue();
+  }
+
+  public Number subtract(Number a, Number b) {
+    return a.doubleValue() - b.doubleValue();
+  }
+
+  public Number multiply(Number a, Number b) {
+    return a.doubleValue() * b.doubleValue();
+  }
+
+  public Number divide(Number a, Number b) {
+    return a.doubleValue() / b.doubleValue();
+  }
+}
+```
+
+> [!TIP]
+> What is `Number`? It is an abstract class that is the superclass of all classes that represent numeric values in java. It is used here to allow the calculator to work with different types of numbers, such as `Integer`, `Double`, and `BigDecimal`. We assumed `doubleValue()` as math operations are typically done with floating point numbers, and not whole numbers. Though an additional feature could be to allow the user to specify the type of number they want to use. Learn more about [`Number`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html).
+
+Since there are a number of operations, it may also make sense to create an operations `enum` that will help make it easier for the controller to determine which operation to perform. 
+
+```java
+// which package would this go in?
+
+public enum Operation {
+    ADD("+"), SUBTRACT("-"), MULTIPLY("*"), DIVIDE("/");
+
+    private final String symbol;
+
+    Operation(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public Operation getOperation(String symbol) {
+        for (Operation operation : Operation.values()) {
+            if (operation.getSymbol().equals(symbol)) {
+                return operation;
+            }
+        }
+        return null;
+    }
+}
+
+```
+
+👉🏽  Discussion - where should you place Operation. It is fair to note there are good arguments for both the Model and Controller (but not the view). So as a team decide as you work through your reasoning. 
+
+### Step 2: Create the
+
 
 
 ## :fire: Java Practice Problem
