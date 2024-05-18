@@ -1,6 +1,6 @@
 # Module 07 Team Activity  - MVC: Controller
 
-
+In this team activity, we will explore the controller component in the Model-View-Controller (MVC) design pattern. The controller is the component that manages the interaction between the model and the view. It is responsible for processing client input, updating the model, and updating the view.
 
 ## Grading
 Grades for team activities will be based on attendance and notes. You must attend, and as a team you need to generate notes that we can confirm your work. Ideally, you upload the notes as a PDF to the team meeting after you build them out. 
@@ -13,7 +13,58 @@ When working in teams, remember do not let one person do all the work. Make sure
 
 ## Learning Objectives
 This team activity is designed to help you understand the following concepts:
-* 
+  * Define and understand the purpose of a controller and how it relates to the driver
+  * Create abstract classes and interfaces to define the interaction between components
+  * Explore the use of packages to break up design components
+
+## Controller
+
+The Controller is often the most misunderstood part of the MVC application architecture pattern. For that reason, there are multiple alternative patterns, and variations on MVC. This older article [Interactive Application Architecture Patterns](https://web.archive.org/web/20201107060523/https://lostechies.com/derekgreer/2007/08/25/interactive-application-architecture/) details some of the differences. It is more detailed than you need to know right now, but the key questions to ask when designing an application are:
+
+* How do you want to handle client input?
+* How do you display the information to the client?
+* How do you want to manage the data and the "state" of the application?
+
+With these three questions in mind, you can start to design the overarching architecture of your application. 
+
+👉🏽  Discussion - Assuming the MVC pattern - how are those three questions answered?
+
+
+It is worth noting that that just because there are three components, there are not three classes. In fact, there are often many classes that make up each component. Additionally, while the components are meant to be separate and "interchangeable" (mostly), that doesn't mean there isn't interaction between all three components. 
+
+👉🏽  Discussion - Wait, Interchangeable? Discuss what this could mean in relation to MVC, think about how polymorphism works to help you. 
+
+### Supervisor Controller Pattern
+
+A more strict view of the MVC pattern is the Supervision Controller. In this patter, the view  never interacts with the model. Instead the controller is the only component that interacts with the model. This is a more strict interpretation of the MVC pattern, and is often used in web applications. 
+
+👉🏽  Discussion - Discuss how this can be advantageous, and any limitations that come to mind.
+
+
+> [!NOTE]
+> Is there a correct answer? No! Design patterns about trade offs and balances. You gain one thing but you may loose another. The important part is to make sure you follow SOLID design principles, and that your code is maintainable and scalable.
+
+### Observer Pattern
+
+Related to the interaction is the Observer Pattern. This pattern is used to allow an object to publish changes to its state. Other objects subscribe to be notified when the state changes. This is often used in GUI programming, and is a common pattern in Java. We will explore this more next module, but it is worth considering it conceptually. With this question:
+
+> If the controller drives the interaction between client, model, and view: how can the view or model notify the controller when something has changed?
+
+
+## Packages
+Before we practice with controllers, let take break from patterns to talk about packages.  The past few assignments and lasts week's module has a lot of files! After a while it can be hard to keep track of everything. This is where packages come in. Packages are a way to organize your code into groups. This makes it easier to find and manage your code.
+
+While it doesn't have to be model, view, controller for your packages, it can be a common way to organize your code with the MVC pattern, along with additional packages for utilities, or other components. 
+
+To represent a package in java, you use the `package` keyword at the top of your file. For example, if you wanted to put a class in a package called `com.mycompany.myapp`, you would put this at the top of your file:
+
+```java
+package com.mycompany.myapp;
+```
+
+However, you **ALSO** need to ensure that your file is in the correct directory structure. For the above package, you would need to put your file in a directory called `com/mycompany/myapp`. This is a common source of errors when working with packages. This directory structure is relative to the root of your project - often where your `src` directory is. Using gradle that is `src/main/java` or `src/main/resources` for java files and resources respectively.  When you compile your code, the compiler will look at the package statement and the directory structure to determine where to put the compiled class files, and it will also look at the directory structure to determine where to find the class files when you run your program.
+
+👉🏽  Discussion - How can packages be useful? What would be some ways you could break up your code from past assignments or team activities. Pick one activity and discuss how you can break it up into concepts, that can then be coupled into packages. 
 
 
 
