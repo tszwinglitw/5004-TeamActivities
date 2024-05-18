@@ -1,11 +1,10 @@
 package solution.view;
 
 import java.io.Console;
-import java.util.Arrays;
 import java.util.stream.Collectors;
 import solution.controller.IController;
 import solution.model.ICalculator;
-import solution.model.Operation;
+
 
 public class ConsoleView implements IView {
     private static final String PROMPT = "> ";
@@ -28,7 +27,7 @@ public class ConsoleView implements IView {
             try {
                 Number result = actions.processOperation(operation);
                 displayResult(result);
-            } catch (Exception e) {
+            } catch (Exception e) { // let the view decide how it wants so show errors
                 displayError(e.getMessage());
             }
         }
@@ -45,7 +44,7 @@ public class ConsoleView implements IView {
     }
 
     public void displayError(String message) {
-        CONSOLE.printf(ERROR + message + "\n");
+        CONSOLE.printf("%s", ERROR + message + "\n");
     }
 
     public void displayResult(Number result) {
