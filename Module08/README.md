@@ -340,11 +340,11 @@ To make such a change, we need to create an minimal interface for the controller
 
 ```java
 public interface IController {
-    void invokeOperation(String operation);
+    void processOperation(String operation);
 }
 ```
 
-This essentially is a wrapper for processOperation, that also handles the callbacks to view for display, and more importantly, error catching.
+You will want to update the permissions on processOperation.
 
 Now, update the view to use this interface. 
 
