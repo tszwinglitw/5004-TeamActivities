@@ -1,4 +1,4 @@
-# Module 07 Team Activity  - MVC: Controller
+# Module 08 Team Activity  - MVC: Controller
 
 In this team activity, we will explore the controller component in the Model-View-Controller (MVC) design pattern. The controller is the component that manages the interaction between the model and the view. It is responsible for processing client input, updating the model, and updating the view.
 
