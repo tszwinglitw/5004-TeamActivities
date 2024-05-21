@@ -53,6 +53,13 @@ The following classes were added to this project.
 > [!TIP]
 > What is **var**? Starting in Java 11, you can use the `var` keyword to declare local variables. The compiler will infer the type of the variable based on the value you assign to it. This can make your code more concise and easier to read. We often don't introduce it right away, as most books are still stuck back at java 8.0. But it is a good feature to know about, and can help your code. Note it is only for local (internal to methods, loops, if statements) variables, and *not for class fields or method parameters*.
 
+
+### Java "Beans" Side Bar
+You will find reference to Java Beans throughout java, which I often found confusing as a student. A Java Bean is a class that follows certain conventions. It must have a no-argument constructor as at least one of the constructors, and it must have getter and setter methods for its properties. That is it! But it is a common pattern in Java, and you will see it often in libraries and frameworks that use reflection to work with classes. Now that records exist in java, another way to look at it are records are immutable with less boilerplate code while beans are mutable.
+
+
+
+
 ## File Types
 Let's take a moment to discuss file types. There are often two major 'types' of files, binary and text. Binary files are files that are stored in a format that is not human-readable. They are often used to store data in a more compact form, and are often used by programs to store data. Text files are files that are stored in a human-readable format. They are often used to store data that needs to be read or edited by humans. That is it. Extensions tell you more about the file/formatting of the content of the file. For example, a `.txt` file is a open text file with no formatting, while a `.xml` file is an XML file which relies on a hierarchy of bracket notation to define information , and a `.json` file is a JSON file that is "code like" storage of the data.
 
@@ -69,7 +76,7 @@ While we have been using .split to parse CSV files, there are libraries that can
 
 
 ## JSON Files
-JavaScript Object Notation - JSON. This format was developed to be a lightweight, human-readable format for exchanging data. It is often used to store configuration information, or to send data between a server and a client. It is based on JavaScript, but is language-independent. It is easy to read and write, and is supported by many programming languages.  For Java, you can use the Jackson library to read and write JSON files. You can find more information about Jackson at [https://github.com/FasterXML/jackson-docs?tab=readme-ov-file#tutorials](https://github.com/FasterXML/jackson-docs?tab=readme-ov-file#tutorials)
+JavaScript Object Notation - JSON. This format was developed to be a lightweight, human-readable format for exchanging data. It is often used to store configuration information, or to send data between a server and a client. It is based on JavaScript but is language-independent. It is easy to read and write, and is supported by many programming languages.  For Java, you can use the Jackson library to read and write JSON files. You can find more information about Jackson at [https://github.com/FasterXML/jackson-docs?tab=readme-ov-file#tutorials](https://github.com/FasterXML/jackson-docs?tab=readme-ov-file#tutorials)
 
 JSON file format looks like
 ```json
