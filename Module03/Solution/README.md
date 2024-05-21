@@ -40,7 +40,7 @@ There is also an argument for Animal to be something more like "Resident" or "Cr
 ## Question 2: Define - What are the "is-a" and "has-a" relationships?
 
 - Animal
-  - is-a: Trick
+  - has-a: Trick
   - has-a: Taxonomy
 - Companion
   - is-a: Animal
@@ -61,7 +61,7 @@ classDiagram
 
 The above diagram uses symbols you may not have seen before, known as "cardinality" symbols. The "*" means "many" and the "1" means "one". So, for example, an Animal has one Taxonomy, but a Menagerie has many Animals.
 
-The way to "read" the above diagram is A Menagerie has many Animals. An Animal has one Taxonomy. An Animal is a Companion. A Companion has many Tricks.
+The way to "read" the above diagram is A Menagerie has many Animals. An Animal has one Taxonomy. An Companion is an Animal. A Companion has many Tricks.
 
 
 ## Question 3: Attributes of Nouns
