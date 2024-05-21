@@ -1,9 +1,7 @@
 public abstract class Companion extends Animal {
     private String friendlyName;
 
-    public Companion(String commonname, String phylum, String order,
-            String Family, String genus, String genus, String species,
-            String classType, String kingdom) {
+    public Companion(String name) {
         setFriendlyName(name);
 
     }

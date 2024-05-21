@@ -1,5 +1,6 @@
 # Module 03 Team Activity - Object Oriented Programming (OOP)
 
+
 Welcome to your first weekly team activity. Team Activities are guided (tutorial like) study sessions with your team. They are designed to help you learn the material in a more interactive way. 
 
 ## Grading
@@ -49,14 +50,12 @@ Realistically, these two terms always go hand in hand. While inheritance is abou
 
 Why would this be the case? Can you think of any examples where inheritance is used but it would not be polymorphic?
 
-### Example of (Good or Bad?) Inheritance
+### Example of (Good or Bad?) Inheritance Let's take the following UML diagram. 
 
-Let's take the following UML diagram. 
-
-```mermaid
----
 Good or bad inheritance?
 ---
+
+```mermaid
 classDiagram
     Shape <|-- Rectangle
     Shape <|-- Circle

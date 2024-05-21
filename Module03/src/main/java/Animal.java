@@ -1,46 +1,27 @@
-import java.util.List;
-import java.util.ArrayList;
+public class Animal {
+    private Taxonomy taxonomy;
+    private String sound;
 
-public abstract class Animal {
-    private static final String BIO_NAME = "Animalia"; // since this doesn't change
-
-    private List<Trick> tricks = new ArrayList<>();
-
-
-    public abstract String getPhylum();
-
-    public abstract String getAnimalClass();
-
-    public abstract String getOrder();
-
-    public abstract String getFamily();
-
-    public abstract String getGenus();
-
-    public abstract String getSpecies();
-
-    public abstract String getSound();
-
-    public abstract int getMaxTricks();
-
-
-    public String getKingdom() {
-        return BIO_NAME;
+    public Animal(Taxonomy taxonomy, String sound) {
+        this.taxonomy = taxonomy;
+        this.sound = sound;
     }
 
-    public int trickCount() {
-        return tricks.size();
-
+    public Taxonomy getTaxonomy() {
+        return taxonomy;
     }
 
-    public boolean addTrick(Trick trick) {
-        if (getMaxTricks() - 1 > tricks.size()) {
-            tricks.add(trick);
-            return true; // able to add a trick
-        }
-        return false; // not able to add a trick
+    public String getSound() {
+        return sound;
     }
 
+    public void setSound(String sound) {
+        this.sound = sound;
+    }
 
+    @Override
+    public String toString() {
+        return ("I am a " + taxonomy.getCommonName() + ", hear me " + sound);
+    }
 
 }
