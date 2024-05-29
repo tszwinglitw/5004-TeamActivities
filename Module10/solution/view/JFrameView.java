@@ -31,23 +31,12 @@ public class JFrameView extends JFrame implements IView {
     public JFrameView(IController controller) {
         super(CAPTION);
         this.controller = controller;
-
-
-        // setSize(300, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-
         // this.setLayout(new FlowLayout());
-
         setCalcDisplay();
-
         setCalcButtons();
-
         setOperationButtons();
-
-
         pack();
 
     }
