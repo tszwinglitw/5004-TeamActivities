@@ -2,4 +2,6 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <entry key="frame_caption">Calculator App</entry>
+    <entry key="font">Arial</entry>
+    <entry key="font_size">30</entry>
 </properties>

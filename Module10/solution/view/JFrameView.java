@@ -21,6 +21,8 @@ public class JFrameView extends JFrame implements IView {
 
     private static Properties properties;
     private static final String CAPTION;
+    private static final String FONT;
+    private static final int FONT_SIZE;
     private IController controller;
     private StringBuffer current = new StringBuffer();
     JLabel calcDisplay;
@@ -45,8 +47,8 @@ public class JFrameView extends JFrame implements IView {
         calcDisplay.setBackground(Color.BLACK);
         calcDisplay.setForeground(Color.WHITE);
         calcDisplay.setHorizontalAlignment(SwingConstants.RIGHT);
-        calcDisplay.setFont(new Font("Arial", Font.PLAIN, 20));
-        calcDisplay.setPreferredSize(new Dimension(getWidth(), 50));
+        calcDisplay.setFont(new Font(FONT, Font.PLAIN, FONT_SIZE));
+        calcDisplay.setPreferredSize(new Dimension(getWidth(), 60));
         this.add(calcDisplay, BorderLayout.NORTH);
 
     }
@@ -62,7 +64,7 @@ public class JFrameView extends JFrame implements IView {
 
         for (String label : buttonLabels) {
             JButton button = new JButton(label);
-            button.setFont(new Font("Arial", Font.PLAIN, 20));
+            button.setFont(new Font(FONT, Font.PLAIN, FONT_SIZE));
             buttonPanel.add(button);
             button.addActionListener(e -> {
                 JButton clickedButton = (JButton) e.getSource();
@@ -81,7 +83,7 @@ public class JFrameView extends JFrame implements IView {
 
         for (String operation : operations) {
             JButton button = new JButton(operation);
-            button.setFont(new Font("Arial", Font.PLAIN, 20));
+            button.setFont(new Font(FONT, Font.PLAIN, FONT_SIZE));
             operationPanel.add(button);
             button.addActionListener(e -> {
                 JButton clickedButton = (JButton) e.getSource();
@@ -92,7 +94,7 @@ public class JFrameView extends JFrame implements IView {
         }
 
         JButton equalsButton = new JButton("=");
-        equalsButton.setFont(new Font("Arial", Font.PLAIN, 20));
+        equalsButton.setFont(new Font(FONT, Font.PLAIN, FONT_SIZE));
         operationPanel.add(equalsButton);
         equalsButton.addActionListener(e -> {
             String text = cleanText(current);
@@ -100,7 +102,11 @@ public class JFrameView extends JFrame implements IView {
                 Number result = controller.processOperation(text);
                 current = new StringBuffer(result.toString());
             } catch (Exception ex) {
-                current = new StringBuffer(ex.getMessage());
+                if (ex.getMessage() != null) {
+                    current = new StringBuffer(ex.getMessage());
+                } else {
+                    current = new StringBuffer("Error");
+                }
             }
             displayResult();
             current.setLength(0);
@@ -125,12 +131,14 @@ public class JFrameView extends JFrame implements IView {
     static {
         loadProperties();
         CAPTION = properties.getProperty("frame_caption");
+        FONT = properties.getProperty("font");
+        FONT_SIZE = Integer.parseInt(properties.getProperty("font_size"));
     }
 
     private static void loadProperties() {
         properties = new Properties();
         try {
-            InputStream fis = JFrameView.class.getResourceAsStream("keys.properties");
+            InputStream fis = JFrameView.class.getResourceAsStream("config.xml");
             properties.loadFromXML(fis);
             fis.close();
         } catch (IOException e) {
