@@ -3,7 +3,7 @@ package student.view;
 import java.io.Console;
 import java.util.stream.Collectors;
 import student.controller.IController;
-import student.model.ICalculator;
+
 
 
 public class ConsoleView implements IView {
@@ -37,7 +37,7 @@ public class ConsoleView implements IView {
     public void displayWelcome() {
         CONSOLE.printf("Welcome to the calculator\n");
         CONSOLE.printf("Allowed operations: "
-                + ICalculator.getOperationSymbols().stream().collect(Collectors.joining(" "))
+                + IController.getOperationSymbols().stream().collect(Collectors.joining(" "))
                 + "\n");
         CONSOLE.printf("Type exit to close calculator.\n");
 
