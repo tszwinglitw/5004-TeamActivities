@@ -7,16 +7,22 @@ package solution.model;
 // This is debatable on where!
 
 public enum Operation {
-    ADD("+"), SUBTRACT("-"), MULTIPLY("*"), DIVIDE("/");
+    ADD("+", 0), SUBTRACT("-", 0), MULTIPLY("*", 1), DIVIDE("/", 1);
 
     private final String symbol;
+    private final int precedence;
 
-    Operation(String symbol) {
+    Operation(String symbol, int precedence) {
         this.symbol = symbol;
+        this.precedence = precedence;
     }
 
     public String getSymbol() {
         return symbol;
+    }
+
+    public int getPrecedence() {
+        return precedence;
     }
 
     public static Operation getOperation(String symbol) {
