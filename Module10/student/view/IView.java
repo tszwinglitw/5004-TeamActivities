@@ -1,4 +1,4 @@
-package solution.view;
+package student.view;
 
 
 

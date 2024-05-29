@@ -1,4 +1,4 @@
-package solution.model;
+package student.model;
 
 public class Calculator implements ICalculator {
     public Number add(Number a, Number b) {

@@ -1,4 +1,4 @@
-package solution.model;
+package student.model;
 
 // We selected placing this ni the model
 // As it is a enum that represents the type

@@ -1,9 +1,9 @@
-package solution.view;
+package student.view;
 
 import java.io.Console;
 import java.util.stream.Collectors;
-import solution.controller.IController;
-import solution.model.ICalculator;
+import student.controller.IController;
+import student.model.ICalculator;
 
 
 public class ConsoleView implements IView {

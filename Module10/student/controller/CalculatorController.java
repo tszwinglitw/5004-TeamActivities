@@ -1,8 +1,8 @@
-package solution.controller;
+package student.controller;
 
 import java.util.Stack;
-import solution.model.ICalculator;
-import solution.model.Operation;
+import student.model.ICalculator;
+import student.model.Operation;
 
 public class CalculatorController implements IController {
 

@@ -1,11 +1,10 @@
-package solution;
 
-import solution.controller.CalculatorController;
-import solution.controller.IController;
-import solution.model.Calculator;
-import solution.model.ICalculator;
-import solution.view.ConsoleView;
-import solution.view.IView;
+import student.controller.CalculatorController;
+import student.controller.IController;
+import student.model.Calculator;
+import student.model.ICalculator;
+import student.view.ConsoleView;
+import student.view.IView;
 
 public class CalculatorApp {
 
