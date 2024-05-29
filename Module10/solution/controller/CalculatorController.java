@@ -26,37 +26,38 @@ public class CalculatorController implements IController {
 
     @Override
     public Number processOperation(String operation) {
-        Stack<Number> numbers = new Stack<>();
-
         String[] tokens = operation.split("\\s+");
+        Stack<Number> numbers = new Stack<>();
+        Stack<Operation> operations = new Stack<>();
 
-        for (var i = tokens.length - 1; i >= 0; i--) {
-            String token = tokens[i];
-            if (token.isEmpty()) {
-                continue;
-            }
-            Number number;
-            if ((number = isNumber(token)) != null) {
+        for (String token : tokens) {
+            Number number = isNumber(token);
+            if (number != null) {
                 numbers.push(number);
             } else {
-                Operation op = ICalculator.getOperation(token);
-                if (op == null) {
-                    throw new IllegalArgumentException("Invalid operation: " + token);
+                Operation op = Operation.getOperation(token);
+                if (op != null) {
+                    while (!operations.isEmpty()
+                            && op.getPrecedence() <= operations.peek().getPrecedence()) {
+                        Operation prevOp = operations.pop();
+                        Number num2 = numbers.pop();
+                        Number num1 = numbers.pop();
+                        Number result = model.invokeOperation(prevOp, num1, num2);
+                        numbers.push(result);
+                    }
+                    operations.push(op);
                 }
-                if (numbers.size() < 2) {
-                    throw new IllegalArgumentException(
-                            "Not enough numbers for operation: " + token);
-                }
-                Number b = numbers.pop();
-                Number a = numbers.pop();
-                Number result;
-                result = model.invokeOperation(op, a, b);
-                numbers.push(result);
             }
         }
-        if (numbers.size() != 1) {
-            throw new IllegalArgumentException("Invalid expression");
+
+        while (!operations.isEmpty()) {
+            Operation op = operations.pop();
+            Number num2 = numbers.pop();
+            Number num1 = numbers.pop();
+            Number result = model.invokeOperation(op, num1, num2);
+            numbers.push(result);
         }
+
         return numbers.pop();
     }
 
