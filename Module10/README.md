@@ -23,7 +23,7 @@ This team activity is designed to help you understand the following concepts:
 
 For this activity, we have provided a working program that uses a console view. The program is a simple calculator that can add, subtract, multiply, and divide two numbers. The program is divided into three parts: the model, the view, and the controller. The model is responsible for the business logic of the program, the view is responsible for displaying the data to the user, and the controller is responsible for handling user input and responding to it. 
 
-👉🏽  Discuss the files provided in the [student](student/) package. IN the last activity, we did a prefix calculator is it still a prefix calculator or did we update it to a normal infix calculator?
+👉🏽  Discuss the files provided in the [student](student/) package. In the last activity, we did a prefix calculator is it still a prefix calculator or did we update it to a normal infix calculator?
 
 ## Let's Practice
 
