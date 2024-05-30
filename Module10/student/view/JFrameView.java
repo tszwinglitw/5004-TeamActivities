@@ -1,12 +1,12 @@
-package solution.view;
+package student.view;
 
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import solution.Settings;
-import solution.controller.IController;
+import student.Settings;
+import student.controller.IController;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.Color;
