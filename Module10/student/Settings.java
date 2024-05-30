@@ -41,6 +41,12 @@ public final class Settings {
         return properties;
     }
 
+    /**
+     * This is what they call the 'singleton' pattern. It is a way to ensure that only one instance
+     * of the class is created.
+     * 
+     * @return the instance of the class
+     */
     public static Settings getInstance() {
         if (instance == null) {
             instance = new Settings();
