@@ -19,7 +19,7 @@ import java.util.Properties;
 
 public class JFrameView extends JFrame implements IView {
 
-    private static Properties properties;
+
     private static final String CAPTION;
     private static final String FONT;
     private static final int FONT_SIZE;
@@ -146,14 +146,14 @@ public class JFrameView extends JFrame implements IView {
 
 
     static {
-        loadProperties();
+        Properties properties = loadProperties();
         CAPTION = properties.getProperty("frame_caption");
         FONT = properties.getProperty("font");
         FONT_SIZE = Integer.parseInt(properties.getProperty("font_size"));
     }
 
-    private static void loadProperties() {
-        properties = new Properties();
+    private static Properties loadProperties() {
+        Properties properties = new Properties();
         try {
             InputStream fis = JFrameView.class.getResourceAsStream("config.xml");
             properties.loadFromXML(fis);
@@ -161,5 +161,6 @@ public class JFrameView extends JFrame implements IView {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return properties;
     }
 }
