@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import javax.swing.UIManager;
-import student.view.JFrameView;
 
 public final class Settings {
     private static Settings instance;
