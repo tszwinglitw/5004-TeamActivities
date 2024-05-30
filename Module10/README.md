@@ -1,5 +1,7 @@
 # Module 10 Team Activity  - MVC: View
 
+In this activity, we will build off last weeks activity (with some changes) to setup a view for our MVC application. Instead of having a console view, we will create a GUI view using Java Swing.
+
 ## Grading
 Grades for team activities will be based on attendance and notes. You must attend, and as a team you need to generate notes that we can confirm your work. Ideally, you upload the notes as a PDF to the team meeting after you build them out. 
 
@@ -11,7 +13,17 @@ When working in teams, remember do not let one person do all the work. Make sure
 
 ## Learning Objectives
 This team activity is designed to help you understand the following concepts:
+* Understand the Model-View-Controller (MVC) design pattern
+* Implement a GUI view using Java Swing
+* Work with an interface, so different types of views are interchangeable
+* Explore the singleton design pattern
+* Review the use of xml properties files
 
+## Explore Provided Code
+
+For this activity, we have provided a working program that uses a console view. The program is a simple calculator that can add, subtract, multiply, and divide two numbers. The program is divided into three parts: the model, the view, and the controller. The model is responsible for the business logic of the program, the view is responsible for displaying the data to the user, and the controller is responsible for handling user input and responding to it. 
+
+👉🏽  Discuss the files provided in the [student](student/) package. IN the last activity, we did a prefix calculator is it still a prefix calculator or did we update it to a normal infix calculator?
 
 ## Let's Practice
 

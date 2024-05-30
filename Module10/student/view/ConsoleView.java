@@ -2,6 +2,7 @@ package student.view;
 
 import java.io.Console;
 import java.util.stream.Collectors;
+import student.Settings;
 import student.controller.IController;
 
 
@@ -11,6 +12,7 @@ public class ConsoleView implements IView {
     private static final String ERROR = "Error: ";
     private static final Console CONSOLE = System.console();
     private IController actions;
+    private Settings settings = Settings.getInstance();
 
 
     public ConsoleView(IController actions) {
@@ -35,7 +37,7 @@ public class ConsoleView implements IView {
     }
 
     public void displayWelcome() {
-        CONSOLE.printf("Welcome to the calculator\n");
+        CONSOLE.printf("Welcome to the %s\n", settings.CAPTION);
         CONSOLE.printf("Allowed operations: "
                 + IController.getOperationSymbols().stream().collect(Collectors.joining(" "))
                 + "\n");
