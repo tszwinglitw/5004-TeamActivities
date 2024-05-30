@@ -36,6 +36,7 @@ public class JFrameView extends JFrame implements IView {
         setCalcDisplay();
         setCalcButtons();
         setOperationButtons();
+        clear();
         pack();
 
     }
@@ -69,13 +70,30 @@ public class JFrameView extends JFrame implements IView {
             button.addActionListener(e -> {
                 JButton clickedButton = (JButton) e.getSource();
                 String buttonLabel = clickedButton.getText();
+                if (current.toString().equals("0") && !buttonLabel.equals(".")) {
+                    current.setLength(0);
+                }
                 current.append(buttonLabel);
                 displayResult();
             });
         }
+
+        JButton clearButton = new JButton("C");
+        clearButton.setFont(new Font(FONT, Font.PLAIN, FONT_SIZE));
+        buttonPanel.add(clearButton);
+        clearButton.addActionListener(e -> {
+            clear();
+        });
+
+
         this.add(buttonPanel, BorderLayout.WEST);
     }
 
+    private void clear() {
+        current.setLength(0);
+        current.append("0");
+        displayResult();
+    }
 
     private void setOperationButtons() {
         JPanel operationPanel = new JPanel(new GridLayout(5, 1));
@@ -109,7 +127,6 @@ public class JFrameView extends JFrame implements IView {
                 }
             }
             displayResult();
-            current.setLength(0);
         });
 
         this.add(operationPanel);
