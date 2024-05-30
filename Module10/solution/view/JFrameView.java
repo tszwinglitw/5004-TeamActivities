@@ -2,27 +2,17 @@ package solution.view;
 
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import solution.Settings;
 import solution.controller.IController;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
 
 public class JFrameView extends JFrame implements IView {
 
 
     private static final Settings settings = Settings.getInstance();
     private IController controller;
-    private StringBuffer current = new StringBuffer();
     CalcDisplay calcDisplay;
 
     public JFrameView(IController controller) {
