@@ -11,12 +11,18 @@ public final class Settings {
     public final String CAPTION;
     public final String FONT;
     public final int FONT_SIZE;
+    public final String NUMBERS;
+    public final String CLEAR_BUTTON;
+    public final String EQUAL_BUTTON;
 
     private Settings() {
         Properties properties = loadProperties();
         CAPTION = properties.getProperty("frame_caption");
         FONT = properties.getProperty("font");
         FONT_SIZE = Integer.parseInt(properties.getProperty("font_size"));
+        NUMBERS = properties.getProperty("calc_numbers");
+        CLEAR_BUTTON = properties.getProperty("calc_clear");
+        EQUAL_BUTTON = properties.getProperty("calc_equals");
         setUIManager();
     }
 

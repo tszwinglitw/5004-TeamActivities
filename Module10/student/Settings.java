@@ -5,17 +5,24 @@ import java.io.InputStream;
 import java.util.Properties;
 import javax.swing.UIManager;
 
+
 public final class Settings {
     private static Settings instance;
     public final String CAPTION;
     public final String FONT;
     public final int FONT_SIZE;
+    public final String NUMBERS;
+    public final String CLEAR_BUTTON;
+    public final String EQUAL_BUTTON;
 
     private Settings() {
         Properties properties = loadProperties();
         CAPTION = properties.getProperty("frame_caption");
         FONT = properties.getProperty("font");
         FONT_SIZE = Integer.parseInt(properties.getProperty("font_size"));
+        NUMBERS = properties.getProperty("calc_numbers");
+        CLEAR_BUTTON = properties.getProperty("calc_clear");
+        EQUAL_BUTTON = properties.getProperty("calc_equals");
         setUIManager();
     }
 
@@ -41,12 +48,6 @@ public final class Settings {
         return properties;
     }
 
-    /**
-     * This is what they call the 'singleton' pattern. It is a way to ensure that only one instance
-     * of the class is created.
-     * 
-     * @return the instance of the class
-     */
     public static Settings getInstance() {
         if (instance == null) {
             instance = new Settings();
