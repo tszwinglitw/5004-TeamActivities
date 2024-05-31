@@ -25,7 +25,32 @@ For this activity, we have provided a working program that uses a console view. 
 
 👉🏽  Discuss the files provided in the [student](student/) package. In the last activity, we did a prefix calculator. Is it still a prefix calculator or did we update it to a normal infix calculator?
 
-## Let's Practice
+
+### Settings.java and a Singleton Pattern
+
+You will see a new file called Settings.java, which uses the following method
+
+```java
+ public static Settings getInstance() {
+        if (instance == null) {
+            instance = new Settings();
+        }
+        return instance;
+    }
+```
+Where instance is a private static variable of the class. This is an example of the singleton design pattern. The singleton design pattern ensures that a class has only one instance and provides a global point of access to that instance. In this case, the Settings class is used to store the properties of the program, such as the title of the window. Arguably, it could be used to hold more information than what we are using, but wanted to just have it as an example.
+
+
+
+
+### Running the current program
+
+You can run the current program as is from the [CalculatorApp.java](student/CalculatorApp.java) file. This will run the program with a console view by default.
+
+> [!CAUTION]
+> This app probably has plenty of bugs/undocumented features, as we didn't put in the many layers of error checking that would be needed for a production application. Just remember, it is an example :) to get you started. 
+
+## Replacing the view.
 
 
 
