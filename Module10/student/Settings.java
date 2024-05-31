@@ -48,6 +48,12 @@ public final class Settings {
         return properties;
     }
 
+    /**
+     * This is a design pattern called the 'singleton' pattern, where you create an instance of an
+     * object, but you make sure only one exists no matter how many times you need the object.
+     * 
+     * @return the instance of the Settings object
+     */
     public static Settings getInstance() {
         if (instance == null) {
             instance = new Settings();
