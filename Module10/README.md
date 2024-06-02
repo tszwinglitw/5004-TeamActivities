@@ -72,7 +72,7 @@ We first need to update the CalculatorApp.java file to use the GUI view instead 
  To use the GUIView instead of the ConsoleView, you will need to update the line to:
 
  ```java
-    IView view = new JFrameView(controller);
+IView view = new JFrameView(controller);
 ```
 
 Yes, that is it for now! However, if you run the application as is, it will look like it is hanging up. That is because we aren't displaying the JFrame yet. We will do that next.
@@ -133,14 +133,14 @@ Let's add our next component, the numbers on the calculator, along with 'C' for 
 
 It is worth noting that CalcNumbers.java extends JPanel, which is a container that can hold other components. This is a common way to group components together in a GUI. From this point of view, anything in CalcNumbers can interact with every component in CalcNumbers, but not components outside without event listeners.
 
-Uncomments the following lines in JFrameView.java to get the numbers to display. 
+Uncomment the following lines in JFrameView.java to get the numbers to display. 
 
 ```java
     // CalcNumbers calcNumbers = new CalcNumbers();
     // calcNumbers.setNumberButtonListener(this::calcNumbersListener);
 ```
 
-:fire: At this point, you should be able to run the application and see the numbers. If you click on them they will display in the display (just as one giant number). 
+:fire: At this point, you should be able to run the application and see the numbers. If you click on them they will display (just as one giant number). 
 
 👉🏽 Discuss - Look through the files and try to figure out *how* the numbers are displaying. What is the sequence of events called to get them to display. 
 
@@ -205,7 +205,7 @@ By now, you hopefully have working graphic calculator. However, it is always go 
     }
 ```
 
-You can then pass in the command line argument, and run the program with the console view or the Graphic User Interface! The important part to this is that if an application is designed right, the views types should be pretty interchangeable to the rest of the application. 
+You can then pass in the command line argument, and run the program with the console view or the Graphic User Interface! The important part to this is that if an application is designed right, the view types should be pretty interchangeable to the rest of the application. 
 
 ## Overall
 
