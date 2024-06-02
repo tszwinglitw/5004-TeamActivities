@@ -14,6 +14,12 @@ public class CalcNumbers extends JPanel {
         super(new GridLayout(4, 3));
     }
 
+    // this is a lazy way to add the buttons. Another
+    // and arguably more common way would be to add all the buttons
+    // then have the listener added after they are created
+    // this is because one may have more than one listener for the same button
+    // and this way you can add them in any order without
+    // adding buttons twice.
     public void setNumberButtonListener(ActionListener listener) {
         String[] buttonLabels = settings.NUMBERS.split(",");
 
