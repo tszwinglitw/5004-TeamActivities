@@ -63,7 +63,7 @@ When thinking about GUIs, it is often good to think of them as a series of "wind
 
 ### Update CalculatorApp.java
 
-We first need to update the CalculatorApp.java file to use the GUI view instead of the Console view. Do do that, go into the CalculatorApp.java file and update the following line:
+We first need to update the CalculatorApp.java file to use the GUI view instead of the Console view. To do that, go into the CalculatorApp.java file and update the following line:
 
 ```java
  IView view = new ConsoleView(controller);
@@ -78,7 +78,9 @@ We first need to update the CalculatorApp.java file to use the GUI view instead 
 Yes, that is it for now! However, if you run the application as is, it will look like it is hanging up. That is because we aren't displaying the JFrame yet. We will do that next.
 
 ### 👉🏽 Discuss JFrameView
-Take a moment to go through the incomplete JFrameView.java file. Discuss what you think the code is doing, and what you think needs to be done to complete the file? (we will step through all of what you will need to do to complete it). 
+Take a moment to go through the incomplete JFrameView.java file. Discuss what you think the code is doing, and what you think needs to be done to complete the file? (we will step through all of what you will need to do to complete it).  
+
+It is also worth noting, our JFrameView actually extends JFrame, which means it is a JFrame, but has the ability to add additional functionality. This is a common way to build GUIs in Java, as you can extend the components to add additional functionality. Often the additional functionality you implement has their own interfaces to help with the design, but we are keeping it simple for now.
 
 > [!TIP]
 > Often when it comes to frames and GUIs, you build them piece by piece, which involves a lot of 
@@ -100,7 +102,110 @@ setVisible(true);
 As a team, discuss the best place to include this, why would the order matter?  Remember, JFrameView implements IView, which has has a method that should be called by the driver.
 
 
+:fire: At this point, you should be able to test, and it open an empty JFrame. If our context was setup correctly in Settings.java, you should see the title populated, and it should match your operating System look and feel (though it won't match dark mode.. just the default look and feel). 
 
+
+### Adding Components to the JFrame - CalcDisplay.java
+
+The first component added to the calculator is the display. The display is a text field that shows the numbers and operations that the user has entered. The display is an instance of a JLabel, but also has functionality to update the display. 
+
+> [!WARNING]
+> In a larger application, CalcDisplay (or another component) would interact with a input validator to ensure the input is valid before displaying it. The validators often exist in the controller side, but can be in the view side depending on the type of the application. Some applications like web application will have input validators at nearly every stage (view, and controller and even model) due to the nature of distributed applications needing layers of validation for security purposes.  We are keeping this simple for now, and just assuming it is valid. 
+
+👉🏽 Discuss the components of CalcDisplay.
+
+Uncomment the following two lines in JFrameView.java to add the CalcDisplay to the JFrame:
+
+```java
+        // calcDisplay = new CalcDisplay();
+        // this.add(calcDisplay, BorderLayout.NORTH);
+
+```
+
+You should be able to run the application and see the CalcDisplay at the top of the JFrame.
+
+
+### Adding Buttons to the JFrame - CalcNumbers.java
+
+Let's add our next component, the numbers on the calculator, along with 'C' for clear. 
+
+👉🏽 Discuss the components of CalcDisplay.  When are the buttons added, during the constructor or later?
+
+It is worth noting that CalcNumbers.java extends JPanel, which is a container that can hold other components. This is a common way to group components together in a GUI. From this point of view, anything in CalcNumbers can interact with every component in CalcNumbers, but not components outside without event listeners.
+
+Uncomments the following lines in JFrameView.java to get the numbers to display. 
+
+```java
+    // CalcNumbers calcNumbers = new CalcNumbers();
+    // calcNumbers.setNumberButtonListener(this::calcNumbersListener);
+```
+
+:fire: At this point, you should be able to run the application and see the numbers. If you click on them they will display in the display (just as one giant number). 
+
+👉🏽 Discuss - Look through the files and try to figure out *how* the numbers are displaying. What is the sequence of events called to get them to display. 
+
+
+#### Adding Clear
+You will notice that the `C` button isn't showing, and doesn't do anything. We will want to add an ActionListener for the button, and then call `setClearButtonListener(ActionListener listener)` in the constructor of JFrameView.java. 
+
+For doing this, think about your direction of interaction. The JFrameView is the main view, that is also handling interaction a between the buttons (Yes, in that regard is a controller specific to this JFrame). Let's first add the ActionListener to the JFrameView.java file. 
+
+```java
+private void clearListener(ActionEvent e) {
+    calcDisplay.clear();
+}
+```
+
+Then, you can add the following line to the JFrameView constructor to add the listener to the button. 
+
+```java
+    calcNumbers.setClearButtonListener(this::clearListener);
+```
+
+Unlike the listener for the buttons, it doesn't need any information from the button itself. It just needs to know that the button was clicked. 
+
+
+:fire: Make sure to test to make sure the clear button works.
+
+### Adding Operations to the JFrame - CalcOperations.java
+
+Now, we just need to add the calculator operations.
+
+👉🏽 Discuss the components of CalcOperations. When are the operations added, during the constructor or later? (This is intentionally a different style than CalcNumbers).
+
+
+#### Adding the Buttons
+:fire: Go ahead and add the CalcOperations pane to the JFrame. You will not be attaching, the
+event listeners yet, but you should be able to see the operations on the JFrame.
+
+#### Adding Event Listener for Operations
+
+For the operations, the event listener is similar to the number. However, we will assume there are spaces on each side of the operation. This is overly simple, as it would allow multiple operations in a row to be added, but for now we are keeping it simple. 
+
+:fire: Using the event listener for numbers as an example, go ahead and add the operations event listener and attach them. 
+
+
+#### Adding the Equals Button Event Listening
+
+Similar to the ConsoleView.java, this is where the 'magic' happens. Once this button is finally clicked, we will pass the constructed string to the controller to be evaluated, and then
+return the result. 
+
+:fire: Go ahead and add the event listener for the equals button. If you get stuck, we have one implemented in the solution. Don't forget to have a try/catch to handle an error and then display the error or "Error" if there is no message/getMessage is null.
+
+
+### Giving options
+
+By now, you hopefully have working graphic calculator. However, it is always go to give options, so we can use command line arguments to determine if we want to use the console view or the GUI view.
+
+```java
+    if (args.length > 0 && args[0].equals("console")) {
+        view = new ConsoleView(controller);
+    } else {
+        view = new JFrameView(controller);
+    }
+```
+
+You can then pass in the command line argument, and run the program with the console view or the Graphic User Interface! The important part to this is that if an application is designed right, the views types should be pretty interchangeable to the rest of the application. 
 
 ## Overall
 
