@@ -52,6 +52,52 @@ You can run the current program as is from the [CalculatorApp.java](student/Calc
 
 ## Replacing the view.
 
+### Understanding Graphical User Interfaces (GUIs)
+
+When we think about console/terminal applications, we often think that there is one path to interact with the program. However, with GUIs, there are many ways to interact with the program. For example, you can click on buttons, type in text fields, and select items from drop-down lists. That means you have to think about all the different ways a user can interact with your program and how you can handle those interactions often through "events". This is called event driven programming, which learning a GUI often teaches us. 
+
+When thinking about GUIs, it is often good to think of them as a series of "windowed" or "framed" components - pictures within pictures! Each component can have its own layout, and you can nest components within components. For example, with a calculator, you will have the surrounding window, then a panel for the buttons, a panel for the text field, and a panel for the different operations. The main window will then determine how those different panels fit within the overall window. It can also handle interactions between the panels, just like a panel that has sub components/panels would do for ones under it. 
+
+👉🏽  Discuss  Take a moment to this 'framed' approach/view of GUIs. How does that change your thoughts about applications you use daily. Does it make more sense why certain locations seem to be related to each other, more than others?
+
+
+### Update CalculatorApp.java
+
+We first need to update the CalculatorApp.java file to use the GUI view instead of the Console view. Do do that, go into the CalculatorApp.java file and update the following line:
+
+```java
+ IView view = new ConsoleView(controller);
+ ```
+
+ To use the GUIView instead of the ConsoleView, you will need to update the line to:
+
+ ```java
+    IView view = new JFrameView(controller);
+```
+
+Yes, that is it for now! However, if you run the application as is, it will look like it is hanging up. That is because we aren't displaying the JFrame yet. We will do that next.
+
+### 👉🏽 Discuss JFrameView
+Take a moment to go through the incomplete JFrameView.java file. Discuss what you think the code is doing, and what you think needs to be done to complete the file? (we will step through all of what you will need to do to complete it). 
+
+> [!TIP]
+> Often when it comes to frames and GUIs, you build them piece by piece, which involves a lot of 
+> running, prototyping and getting the look you want.  It also involves a lot of research! Knowing 
+> exactly all the components is difficult to remember.  For this reason there exists GUI builders, 
+> which can help you build the GUIs without having to remember all the components. However, they 
+> also add a bunch of code that may be specific to that builder. For now, it is best to learn the 
+> components by hand, so you understand what is going on. 
+> 
+
+### Enabling the JFrame
+
+To cause the JFrame to display, you need to add the following line to the JFrameView.java file:
+
+```java
+setVisible(true);
+```
+
+As a team, discuss the best place to include this, why would the order matter?  Remember, JFrameView implements IView, which has has a method that should be called by the driver.
 
 
 

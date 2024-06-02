@@ -18,29 +18,25 @@ public class JFrameView extends JFrame implements IView {
     public JFrameView(IController controller) {
         super(settings.CAPTION);
         this.controller = controller;
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // center the window
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // close the application when the window is
+                                                        // closed
 
         // set the display
-        calcDisplay = new CalcDisplay();
-        this.add(calcDisplay, BorderLayout.NORTH);
+        // calcDisplay = new CalcDisplay();
+        // this.add(calcDisplay, BorderLayout.NORTH);
 
         // set the buttons plane
-        CalcNumbers calcNumbers = new CalcNumbers();
-        calcNumbers.setNumberButtonListener(this::calcNumbersListener);
-        calcNumbers.setClearButtonListener(this::clearListener);
+        // CalcNumbers calcNumbers = new CalcNumbers();
+        // calcNumbers.setNumberButtonListener(this::calcNumbersListener);
 
-        this.add(calcNumbers, BorderLayout.WEST);
+
 
         // set the operations plane
-        CalcOperations calcOperations = new CalcOperations();
-        calcOperations.setOperationButtonListener(this::operationListener);
-        calcOperations.setEqualsButtonListener(this::equalsListener);
 
-        this.add(calcOperations);
 
-        pack();
-        calcDisplay.clear(); // make sure the display is clear at the beginning
+        pack(); // ensures frame is large enough to display all components, but not larger than
+                // necessary
     }
 
 
@@ -56,34 +52,11 @@ public class JFrameView extends JFrame implements IView {
 
     }
 
-    private void clearListener(ActionEvent e) {
-        calcDisplay.clear();
-    }
-
-    private void operationListener(ActionEvent e) {
-        JButton clickedButton = (JButton) e.getSource();
-        String operationSymbol = clickedButton.getText();
-        calcDisplay.updateDisplay(" " + operationSymbol + " ");
-    }
-
-    private void equalsListener(ActionEvent e) {
-        try {
-            Number result = controller.processOperation(calcDisplay.getText());
-            calcDisplay.updateDisplay(result.toString(), false);
-        } catch (Exception ex) {
-            if (ex.getMessage() != null) {
-                calcDisplay.updateDisplay(ex.getMessage(), false);
-            } else {
-                calcDisplay.updateDisplay("Error", false);
-            }
-        }
-    }
-
 
 
     @Override
     public void start() {
-        setVisible(true);
+        // do you need to add anything here?
     }
 
 
