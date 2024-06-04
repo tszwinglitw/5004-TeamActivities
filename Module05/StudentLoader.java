@@ -1,11 +1,11 @@
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Stream;
 import java.util.stream.Collectors;
 
@@ -51,5 +51,61 @@ public class StudentLoader {
     // outputs then will be "person has completed class1 class2 etc"
     // for each student
 
+    public static void main(String[] args) {
 
+        List<String> inLines = List.of();
+        List<String> outLines = List.of();
+
+        // Read file
+        try {
+            inLines = Files.readAllLines(Path.of("./courses.txt"));
+            System.out.println(inLines);
+
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        Map<String, Set<String>> students = new HashMap<>();
+        inLines.stream()
+                .map(line -> line.split("\\s+"))
+                .forEach(parts ->
+                        {
+                            // let's add stuff here
+                            String name = parts[0];
+                            String course = parts[1];
+
+                            Set<String> courseSet = students.get(name);
+
+                            // make sure the Set<String> is initialized
+                            if (courseSet == null) {
+                                courseSet = new HashSet<>();
+                            }
+
+                            courseSet.add(course);
+                            students.put(name, courseSet);
+
+                        }
+                );
+
+        outLines = students.entrySet().stream().map(x -> {
+            String name = x.getKey();
+            Set<String> course = x.getValue();
+            String courseString = String.join(", ", course);
+
+            // System.out.println(name + " has completed: " + courseString);
+            return String.format("%s: %s", name, courseString);
+        }).collect(Collectors.toList());
+        System.out.println(outLines);
+
+        // Write file
+        try {
+
+            Files.write(Path.of("./output.txt"), outLines);
+
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 }

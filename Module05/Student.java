@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /** feel free to use this template as a starting point. */
 
 public class Student extends Person {
@@ -6,6 +8,30 @@ public class Student extends Person {
     public Student(String theName, int id) {
         super(theName);
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        // 1. check if exactly the same object
+        if (this == other) {
+            return true;
+        }
+
+        // 2. type check
+        if (!(other instanceof Student)) {
+            return false;
+        }
+
+        Student o = (Student) other;
+
+        // 3. check fields
+        return this.getName().equals(o.getName())
+                && this.id == o.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName(), this.getId());
     }
 
     public int getId() {
