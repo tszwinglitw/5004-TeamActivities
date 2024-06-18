@@ -28,7 +28,8 @@ public record BoardGame(String name, int id, int minPlayers, int maxPlayers, int
     }
 
     public static void main(String[] args) { // used for local quick tests
-        var bg = new BoardGame("Catan", 1, 3, 4, 60, 30, 2.5, 1, 4.5, 1995);
+        System.out.println("== RECORD VERSION ==");
+        var bg = new BoardGame("Catan", 1, 4, 4, 60, 30, 2.5, 1, 4.5, 1995);
         var bg2 = new BoardGame("Catan", 1, 3, 4, 60, 30, 2.5, 1, 4.5, 1995);
         var bg3 = new BoardGame("Catan", 2, 3, 4, 60, 30, 2.5, 1, 4.5, 1995);
         System.out.println(bg);
@@ -38,5 +39,4 @@ public record BoardGame(String name, int id, int minPlayers, int maxPlayers, int
         System.out.println(bg.equals(bg3) + " " + String.valueOf(bg.hashCode() == bg3.hashCode()));
 
     }
-
 }

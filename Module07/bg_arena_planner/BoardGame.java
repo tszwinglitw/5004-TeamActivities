@@ -245,7 +245,8 @@ public class BoardGame {
      * @param args command line arguments
      */
     public static void main(String[] args) { // used for local quick tests
-        BoardGame bg = new BoardGame("Catan", 1, 3, 4, 60, 30, 2.5, 1, 4.5, 1995);
+        System.out.println("== CLASS VERSION ==");
+        BoardGame bg = new BoardGame("Catan", 1, 4, 4, 60, 30, 2.5, 1, 4.5, 1995);
         BoardGame bg2 = new BoardGame("Catan", 1, 3, 4, 60, 30, 2.5, 1, 4.5, 1995);
         BoardGame bg3 = new BoardGame("Catan", 2, 3, 4, 60, 30, 2.5, 1, 4.5, 1995);
         System.out.println(bg);

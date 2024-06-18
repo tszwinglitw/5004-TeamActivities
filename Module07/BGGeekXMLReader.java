@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Map;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.Attributes;
 
@@ -45,8 +46,7 @@ public class BGGeekXMLReader {
         }
 
         @Override
-        public void startElement(String uri, String localName, String qName,
-                Attributes attributes) {
+        public void startElement(String uri, String localName, String qName, Attributes attributes) {
             buffer.setLength(0); // reset the buffer
             if (qName.equalsIgnoreCase("item")) {
                 String type = attributes.getValue("type"); // since the xml is focused on attributes
@@ -59,22 +59,33 @@ public class BGGeekXMLReader {
                     String name = attributes.getValue("value");
                     current.put("name", name);
                 }
-            } // add more for yearPublished here
+            } else if (qName.equalsIgnoreCase("yearPublished")) {
+                String yearPublished = attributes.getValue("value");
+                current.put("yearPublished", yearPublished);
+
+            }
+
         }
+
 
         @Override
         public void endElement(String uri, String localName, String qName) {
+            // add an else that handles description and thumbnail
             if (qName.equalsIgnoreCase("item")) {
                 games.add(buildRecordFromMap(current));
                 current = null;
-            } // add an else that handles description and thumbnail
+            } else if (qName.equalsIgnoreCase("thumbnail")) {
+                current.put("thumbnail", buffer.toString());
+            } else if (qName.equalsIgnoreCase("description")) {
+                current.put("description", buffer.toString());
+            }
         }
 
         @Override
         public void characters(char[] ch, int start, int length) {
             buffer.append(ch, start, length);
         }
-
     }
-
 }
+
+

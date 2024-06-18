@@ -10,7 +10,7 @@ public class BGGeek {
      * Gets the XML file from the Board Game Geek API.
      * https://boardgamegeek.com/wiki/page/BGG_XML_API2
      * 
-     * @param gameId
+     * @param gameIds
      * @return
      */
     public static InputStream getXML(String gameIds) {
