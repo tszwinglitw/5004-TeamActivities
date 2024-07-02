@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import solution.Settings;
+import student.Settings;
 
 public class CalcDisplay extends JLabel {
     private static final Settings settings = Settings.getInstance();

@@ -6,6 +6,9 @@ import student.model.Calculator;
 import student.model.ICalculator;
 import student.view.ConsoleView;
 import student.view.IView;
+import student.view.JFrameView;
+
+import javax.swing.*;
 
 public class CalculatorApp {
 
@@ -13,8 +16,12 @@ public class CalculatorApp {
 
         ICalculator model = new Calculator();
         IController controller = new CalculatorController(model);
-        IView view = new ConsoleView(controller);
-
+        IView view;
+        if (args.length > 0 && args[0].equals("console")) {
+            view = new ConsoleView(controller);
+        } else {
+            view = new JFrameView(controller);
+        }
 
         view.start();
 

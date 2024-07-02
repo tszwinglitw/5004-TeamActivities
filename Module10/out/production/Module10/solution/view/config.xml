@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="frame_caption">Calculator App</entry>
+    <entry key="font">Arial</entry>
+    <entry key="font_size">30</entry>
+    <entry key="calc_numbers">1,2,3,4,5,6,7,8,9,.,0</entry>
+    <entry key="calc_clear">C</entry>
+    <entry key="calc_equals">=</entry>
+</properties>
